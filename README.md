@@ -12,7 +12,7 @@ to cache properly. I checked all of that , and even tried multiple browsers , so
 the issue was  in my network layer somewhere , possibly DNS caching. 
 
 
------- 
+
 
 =================================================================================================================================================
 When Proton VPN is inatalled on widows , I would have these files occassionally generate from this path 
@@ -23,7 +23,9 @@ the folder - ProtonVPN_Url_cmnccr2xp2ofmvhglly0haihuyzzqh0i - with a user.config
 =
 Startup.profile
 =
---- After deleting these files , I was able to view my site via proton vpn successfully , EVEN on multiple browsers, 
+--- After deleting these files , I was able to view my site via proton vpn successfully , when i was NOT ABLE TO AT ALL before
+( just that site though , but )
+ EVEN on multiple browsers, 
 it was at the OS cache / network level , so a bit tricky to spot and find.  
 =
 =
