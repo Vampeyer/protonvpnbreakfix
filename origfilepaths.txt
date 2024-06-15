@@ -1,0 +1,10 @@
+
+c:\users\vampeyer\appdata\local\protonvpn\logs
+
+
+
+C:\Users\Vampeyer\AppData\Local\ProtonVPN 
+
+was the startup folder for both the 
+ProtonVPN_Urlxxxxxxxxxxxxx  folder with user config files -   and the 
+startup.profile file 

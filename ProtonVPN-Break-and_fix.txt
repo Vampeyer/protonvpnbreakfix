@@ -1,0 +1,63 @@
+
+
+
+============= Proton VPN ,Complete website break and fixing  ====================
+=================High Severity ============================
+
+
+Problem : Local site caching causing issues on , specific sites  , when querying with multiple browsers 
+
+Solution : Deleted the local files described here ,  and it fixed it where the site could be then viewed on all 
+		tested browsers , when it could not before
+
+
+
+C:\Users\Vampeyer\AppData\Local\ProtonVPN 
+=
+was the startup folder for both the 
+ProtonVPN_Urlxxxxxxxxxxxxx  folder with user config files -   and the 
+startup.profile file  that were causing the original issue. 
+=
+- Deletion of these files ,in their directory , 
+causes new ones to be generated , and the caching issue to be resolved. 
+=
+With these files removed from the local program directory , my site was successfuly 
+then able to be viewed. 
+=
+------- To implement this code , in C# , write the code in the beginning of the load event of the program to automatically delete
+these files , as it then makes navigation faster that way anyhow. 
+=
+
+
+Extra logs were created here I am also noting  - 
+C:\users\vampeyer\appdata\local\protonvpn\logs
+
+that are also worth deleting onstart , as they cause a shade bit more resource usage as new ones are created. 
+
+
+
+
+
+
+
+
+
+
+========================================================================================================
+
+
+
+==========================================================
+Note to self - come back in a week and write and push the code to fix it  
+==========================================================
+
+
+Note to the reader , if you found this valueable , let me know , either in thread or   via financial complements 
+for an hour of professional time ($80.00 , here  - https://buy.stripe.com/9AQ9AH5KL9l24Xm006 )
+here  - 
+
+Thank you  
+
+
+
+

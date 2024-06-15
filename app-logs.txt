@@ -1,0 +1,991 @@
+﻿2024-06-14T00:59:21.303Z | INFO  | DNS | No fresh IP addresses for host 'dns.google' were found in the cache. Triggering a refresh. | {"Caller":"ARecordDnsManagerBase.ResolveOrGetFromCacheAsync:93"}
+2024-06-14T00:59:21.303Z | ERROR | DNS:ERROR | Unexpected error in DNS resolve task wait. | {"Caller":"DnsResolverBase.TryWaitAnySuccessfulResolveAsync:131"}
+System.Net.Http.HttpRequestException: A socket operation was attempted to an unreachable network. (0.0.0.17:443)
+ ---> System.Net.Sockets.SocketException (10051): A socket operation was attempted to an unreachable network.
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|277_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(HttpRequestMessage request)
+   at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.GetHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.<SendAsync>g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+   at ProtonVPN.Dns.Resolvers.DnsOverHttpsResolverBase.ResolveForHostAsync(IpAddress ipAddress, DnsOverHttpsParallelHttpRequestConfiguration config, CancellationToken cancellationToken)
+   at ProtonVPN.Dns.Resolvers.DnsResolverBase.TryWaitAnySuccessfulResolveAsync(IList`1 resolveTasks, CancellationTokenSource cancellationTokenSource)
+2024-06-14T00:59:21.305Z | INFO  | DNS | Attempting a UDP DNS request for host 'dns.google'. | {"Caller":"DnsOverHttpsProvidersManager.ResolveHostAsync:51"}
+2024-06-14T00:59:21.306Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'dns.google'. | {"Caller":"DnsResolverBase.ResolveAsync:63"}
+2024-06-14T00:59:21.306Z | INFO  | DNS:NAME_SERVER | Getting name servers from available network interfaces. | {"Caller":"NameServersLoader.Get:45"}
+2024-06-14T00:59:21.317Z | ERROR | DNS:NAME_SERVER | Failed to find any name servers. | {"Caller":"NameServersLoader.Get:65"}
+2024-06-14T00:59:21.317Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'dns.google' through system. | {"Caller":"SystemDnsResolver.ResolveWithSystemAsync:45"}
+2024-06-14T00:59:21.317Z | ERROR | DNS:ERROR | Failed to resolve host 'dns.google' through system. | {"Caller":"SystemDnsResolver.ResolveWithSystemAsync:50"}
+System.Net.Sockets.SocketException (11001): No such host is known.
+   at System.Net.NameResolutionPal.ProcessResult(SocketError errorCode, GetAddrInfoExContext* context)
+   at System.Net.NameResolutionPal.GetAddressInfoExCallback(Int32 error, Int32 bytes, NativeOverlapped* overlapped)
+--- End of stack trace from previous location ---
+   at ProtonVPN.Dns.Resolvers.System.SystemDnsResolver.ResolveWithSystemAsync(String host, CancellationToken cancellationToken)
+2024-06-14T00:59:21.317Z | ERROR | DNS:ERROR | Cannot create DNS response entity because no IP addresses were provided. | {"Caller":"DnsResolverBase.CreateDnsResponseWithIpAddresses:158"}
+2024-06-14T00:59:21.317Z | ERROR | DNS:ERROR | Failed to resolve host 'dns.google'. | {"Caller":"DnsResolverBase.LogResult:76"}
+2024-06-14T00:59:21.317Z | ERROR | DNS:ERROR | The UDP DNS request was unsuccessful for host 'dns.google'. | {"Caller":"DnsOverHttpsProvidersManager.ResolveHostAsync:62"}
+2024-06-14T00:59:21.337Z | INFO  | SETTINGS:CHANGED | Setting 'DnsCache' changed from 'null' to '99885Z","ExpirationDateTimeUtc":"2024-06-14T00:03:55.7299885Z"}}'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T00:59:21.337Z | INFO  | DNS | Returning cached IP addresses for host 'dns.google'. New TTL of 00:10:00 resulting in a new expiration date of 6/14/2024 1:09:21 AM. | {"Caller":"ARecordDnsManagerBase.GetIpAddressesFromCacheAndSetNewTtlAsync:147"}
+2024-06-14T00:59:21.337Z | ERROR | DNS:ERROR | Unexpected error in DNS resolve task wait. | {"Caller":"DnsResolverBase.TryWaitAnySuccessfulResolveAsync:131"}
+System.Net.Http.HttpRequestException: A socket operation was attempted to an unreachable network. (0.0.0.17:443)
+ ---> System.Net.Sockets.SocketException (10051): A socket operation was attempted to an unreachable network.
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|277_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(HttpRequestMessage request)
+   at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.GetHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.<SendAsync>g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+   at ProtonVPN.Dns.Resolvers.DnsOverHttpsResolverBase.ResolveForHostAsync(IpAddress ipAddress, DnsOverHttpsParallelHttpRequestConfiguration config, CancellationToken cancellationToken)
+   at ProtonVPN.Dns.Resolvers.DnsResolverBase.TryWaitAnySuccessfulResolveAsync(IList`1 resolveTasks, CancellationTokenSource cancellationTokenSource)
+2024-06-14T00:59:21.338Z | ERROR | DNS:ERROR | Failed to resolve host 'vpn-api.proton.me'. | {"Caller":"DnsResolverBase.LogResult:76"}
+2024-06-14T00:59:21.338Z | ERROR | DNS:ERROR | The HTTPS DNS request was unsuccessful for host 'vpn-api.proton.me'. | {"Caller":"DnsManager.ResolveDnsAsync:77"}
+2024-06-14T00:59:21.384Z | INFO  | SETTINGS:CHANGED | Setting 'DnsCache' changed from 'null' to '84792Z","ExpirationDateTimeUtc":"2024-06-14T01:09:21.2884792Z"}}'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T00:59:21.384Z | INFO  | DNS | Returning cached IP addresses for host 'vpn-api.proton.me'. New TTL of 00:10:00 resulting in a new expiration date of 6/14/2024 1:09:21 AM. | {"Caller":"ARecordDnsManagerBase.GetIpAddressesFromCacheAndSetNewTtlAsync:147"}
+2024-06-14T00:59:21.384Z | INFO  | API:REQUEST | GET "https://185.159.159.148/feature/v2/frontend" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T00:59:21.385Z | ERROR | API:ERROR | GET "https://185.159.159.148/feature/v2/frontend" failed: A socket operation was attempted to an unreachable host. (185.159.159.148:443) ---> A socket operation was attempted to an unreachable host. | {"Caller":"LoggingHandler.SendAsync:56"}
+2024-06-14T00:59:21.385Z | ERROR | API:ERROR | API request 'https://185.159.159.148/feature/v2/frontend' failed. | {"Caller":"DnsHandler.SendRequestToIpAddressAsync:94"}
+System.Net.Http.HttpRequestException: A socket operation was attempted to an unreachable host. (185.159.159.148:443)
+ ---> System.Net.Sockets.SocketException (10065): A socket operation was attempted to an unreachable host.
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|277_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(HttpRequestMessage request)
+   at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.GetHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.DecompressionHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at ProtonVPN.Api.Handlers.LoggingHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at ProtonVPN.Api.Handlers.DnsHandler.SendRequestAsync(HttpRequestMessage request, CancellationToken token)
+   at ProtonVPN.Api.Handlers.DnsHandler.SendRequestToIpAddressAsync(IpAddress ipAddress, HttpRequestMessage request, CancellationToken token)
+2024-06-14T00:59:21.386Z | INFO  | API | Waiting for 00:00:01.1764762 before retrying GET https://vpn-api.proton.me/feature/v2/frontend due to exception A socket operation was attempted to an unreachable host. (185.159.159.148:443) ---> A socket operation was attempted to an unreachable host.. Retry count: 1. | {"Caller":"RetryPolicyProvider.GetExceptionRetryPolicy:116"}
+2024-06-14T00:59:21.473Z | INFO  | PROCESS.COMM | Received VPN Status 'Reconnecting', NetworkBlocked: True Error: 'None', EndpointIp: '195.181.163.1', Label: '0', VpnProtocol: 'OpenVpnTcp', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T00:59:21.525Z | INFO  | API:REQUEST | GET "https://185.159.159.148/vpn/servers/CAAcT4THxcsB1XHRQYYW3NrHSfbhsAm5nUr_4far5EKfo_EbJmWqiwGa5apWENDClfdJPB7-iTaNuvsd9GuOzQ==" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T00:59:21.533Z | ERROR | API:ERROR | GET "https://185.159.159.148/vpn/servers/CAAcT4THxcsB1XHRQYYW3NrHSfbhsAm5nUr_4far5EKfo_EbJmWqiwGa5apWENDClfdJPB7-iTaNuvsd9GuOzQ==" failed: A socket operation was attempted to an unreachable host. (185.159.159.148:443) ---> A socket operation was attempted to an unreachable host. | {"Caller":"LoggingHandler.SendAsync:56"}
+2024-06-14T00:59:21.534Z | ERROR | API:ERROR | API request 'https://185.159.159.148/vpn/servers/CAAcT4THxcsB1XHRQYYW3NrHSfbhsAm5nUr_4far5EKfo_EbJmWqiwGa5apWENDClfdJPB7-iTaNuvsd9GuOzQ==' failed. | {"Caller":"DnsHandler.SendRequestToIpAddressAsync:94"}
+System.Net.Http.HttpRequestException: A socket operation was attempted to an unreachable host. (185.159.159.148:443)
+ ---> System.Net.Sockets.SocketException (10065): A socket operation was attempted to an unreachable host.
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|277_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(HttpRequestMessage request)
+   at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.GetHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.DecompressionHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at ProtonVPN.Api.Handlers.LoggingHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at ProtonVPN.Api.Handlers.DnsHandler.SendRequestAsync(HttpRequestMessage request, CancellationToken token)
+   at ProtonVPN.Api.Handlers.DnsHandler.SendRequestToIpAddressAsync(IpAddress ipAddress, HttpRequestMessage request, CancellationToken token)
+2024-06-14T00:59:21.536Z | INFO  | API | Waiting for 00:00:01.1950484 before retrying GET https://vpn-api.proton.me/vpn/servers/CAAcT4THxcsB1XHRQYYW3NrHSfbhsAm5nUr_4far5EKfo_EbJmWqiwGa5apWENDClfdJPB7-iTaNuvsd9GuOzQ== due to exception A socket operation was attempted to an unreachable host. (185.159.159.148:443) ---> A socket operation was attempted to an unreachable host.. Retry count: 1. | {"Caller":"RetryPolicyProvider.GetExceptionRetryPolicy:116"}
+2024-06-14T00:59:22.578Z | INFO  | API:REQUEST | GET "https://185.159.159.148/feature/v2/frontend" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T00:59:22.581Z | ERROR | API:ERROR | GET "https://185.159.159.148/feature/v2/frontend" failed: A socket operation was attempted to an unreachable host. (185.159.159.148:443) ---> A socket operation was attempted to an unreachable host. | {"Caller":"LoggingHandler.SendAsync:56"}
+2024-06-14T00:59:22.581Z | ERROR | API:ERROR | API request 'https://185.159.159.148/feature/v2/frontend' failed. | {"Caller":"DnsHandler.SendRequestToIpAddressAsync:94"}
+System.Net.Http.HttpRequestException: A socket operation was attempted to an unreachable host. (185.159.159.148:443)
+ ---> System.Net.Sockets.SocketException (10065): A socket operation was attempted to an unreachable host.
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|277_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(HttpRequestMessage request)
+   at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.GetHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.DecompressionHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at ProtonVPN.Api.Handlers.LoggingHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at ProtonVPN.Api.Handlers.DnsHandler.SendRequestAsync(HttpRequestMessage request, CancellationToken token)
+   at ProtonVPN.Api.Handlers.DnsHandler.SendRequestToIpAddressAsync(IpAddress ipAddress, HttpRequestMessage request, CancellationToken token)
+2024-06-14T00:59:22.582Z | INFO  | API | Waiting for 00:00:02.2980181 before retrying GET https://vpn-api.proton.me/feature/v2/frontend due to exception A socket operation was attempted to an unreachable host. (185.159.159.148:443) ---> A socket operation was attempted to an unreachable host.. Retry count: 2. | {"Caller":"RetryPolicyProvider.GetExceptionRetryPolicy:116"}
+2024-06-14T00:59:22.731Z | INFO  | API:REQUEST | GET "https://185.159.159.148/vpn/servers/CAAcT4THxcsB1XHRQYYW3NrHSfbhsAm5nUr_4far5EKfo_EbJmWqiwGa5apWENDClfdJPB7-iTaNuvsd9GuOzQ==" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T00:59:22.732Z | ERROR | API:ERROR | GET "https://185.159.159.148/vpn/servers/CAAcT4THxcsB1XHRQYYW3NrHSfbhsAm5nUr_4far5EKfo_EbJmWqiwGa5apWENDClfdJPB7-iTaNuvsd9GuOzQ==" failed: A socket operation was attempted to an unreachable host. (185.159.159.148:443) ---> A socket operation was attempted to an unreachable host. | {"Caller":"LoggingHandler.SendAsync:56"}
+2024-06-14T00:59:22.732Z | ERROR | API:ERROR | API request 'https://185.159.159.148/vpn/servers/CAAcT4THxcsB1XHRQYYW3NrHSfbhsAm5nUr_4far5EKfo_EbJmWqiwGa5apWENDClfdJPB7-iTaNuvsd9GuOzQ==' failed. | {"Caller":"DnsHandler.SendRequestToIpAddressAsync:94"}
+System.Net.Http.HttpRequestException: A socket operation was attempted to an unreachable host. (185.159.159.148:443)
+ ---> System.Net.Sockets.SocketException (10065): A socket operation was attempted to an unreachable host.
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|277_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(HttpRequestMessage request)
+   at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.GetHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.DecompressionHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at ProtonVPN.Api.Handlers.LoggingHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at ProtonVPN.Api.Handlers.DnsHandler.SendRequestAsync(HttpRequestMessage request, CancellationToken token)
+   at ProtonVPN.Api.Handlers.DnsHandler.SendRequestToIpAddressAsync(IpAddress ipAddress, HttpRequestMessage request, CancellationToken token)
+2024-06-14T00:59:22.733Z | INFO  | API | Waiting for 00:00:01.8359885 before retrying GET https://vpn-api.proton.me/vpn/servers/CAAcT4THxcsB1XHRQYYW3NrHSfbhsAm5nUr_4far5EKfo_EbJmWqiwGa5apWENDClfdJPB7-iTaNuvsd9GuOzQ== due to exception A socket operation was attempted to an unreachable host. (185.159.159.148:443) ---> A socket operation was attempted to an unreachable host.. Retry count: 2. | {"Caller":"RetryPolicyProvider.GetExceptionRetryPolicy:116"}
+2024-06-14T00:59:24.576Z | INFO  | API:REQUEST | GET "https://185.159.159.148/vpn/servers/CAAcT4THxcsB1XHRQYYW3NrHSfbhsAm5nUr_4far5EKfo_EbJmWqiwGa5apWENDClfdJPB7-iTaNuvsd9GuOzQ==" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T00:59:24.577Z | ERROR | API:ERROR | GET "https://185.159.159.148/vpn/servers/CAAcT4THxcsB1XHRQYYW3NrHSfbhsAm5nUr_4far5EKfo_EbJmWqiwGa5apWENDClfdJPB7-iTaNuvsd9GuOzQ==" failed: A socket operation was attempted to an unreachable host. (185.159.159.148:443) ---> A socket operation was attempted to an unreachable host. | {"Caller":"LoggingHandler.SendAsync:56"}
+2024-06-14T00:59:24.577Z | ERROR | API:ERROR | API request 'https://185.159.159.148/vpn/servers/CAAcT4THxcsB1XHRQYYW3NrHSfbhsAm5nUr_4far5EKfo_EbJmWqiwGa5apWENDClfdJPB7-iTaNuvsd9GuOzQ==' failed. | {"Caller":"DnsHandler.SendRequestToIpAddressAsync:94"}
+System.Net.Http.HttpRequestException: A socket operation was attempted to an unreachable host. (185.159.159.148:443)
+ ---> System.Net.Sockets.SocketException (10065): A socket operation was attempted to an unreachable host.
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|277_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(HttpRequestMessage request)
+   at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.GetHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.DecompressionHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at ProtonVPN.Api.Handlers.LoggingHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at ProtonVPN.Api.Handlers.DnsHandler.SendRequestAsync(HttpRequestMessage request, CancellationToken token)
+   at ProtonVPN.Api.Handlers.DnsHandler.SendRequestToIpAddressAsync(IpAddress ipAddress, HttpRequestMessage request, CancellationToken token)
+2024-06-14T00:59:24.886Z | INFO  | API:REQUEST | GET "https://185.159.159.148/feature/v2/frontend" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T00:59:26.586Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/feature/v2/frontend": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T00:59:26.605Z | INFO  | SETTINGS:CHANGED | Setting 'FeatureFlags' changed from '5fnIwhaCgLz9/AvxhOBkhENdXJ9bHW3BLgoKKwb77MTd1/T05VfMxiQ3onl1qSP"' to 'BR0S8nSmTsHdKafW7CRpCVvvkuWMdiCd8YLINGLc05oEoQ+jZPi8fTMFHjRQw=="'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T00:59:34.894Z | INFO  | PROCESS.COMM | Received VPN Status 'Reconnecting', NetworkBlocked: True Error: 'None', EndpointIp: '195.181.163.1', Label: '1', VpnProtocol: 'OpenVpnTcp', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T00:59:36.045Z | INFO  | PROCESS.COMM | Received VPN Status 'Waiting', NetworkBlocked: True Error: 'None', EndpointIp: '195.181.163.1', Label: '1', VpnProtocol: 'OpenVpnTcp', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T00:59:36.121Z | INFO  | PROCESS.COMM | Received VPN Status 'Authenticating', NetworkBlocked: True Error: 'None', EndpointIp: '195.181.163.1', Label: '1', VpnProtocol: 'OpenVpnTcp', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T00:59:37.753Z | INFO  | PROCESS.COMM | Received VPN Status 'RetrievingConfiguration', NetworkBlocked: True Error: 'None', EndpointIp: '195.181.163.1', Label: '1', VpnProtocol: 'OpenVpnTcp', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T00:59:38.002Z | INFO  | PROCESS.COMM | Received VPN Status 'AssigningIp', NetworkBlocked: True Error: 'None', EndpointIp: '195.181.163.1', Label: '1', VpnProtocol: 'OpenVpnTcp', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T00:59:44.941Z | INFO  | PROCESS.COMM | Received VPN Status 'Connected', NetworkBlocked: True Error: 'None', EndpointIp: '195.181.163.1', Label: '1', VpnProtocol: 'OpenVpnTcp', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T00:59:44.941Z | INFO  | PROCESS.COMM | Received connection details change while connected to server with IP '195.181.163.32' | {"Caller":"AppController.ConnectionDetailsChange:88"}
+2024-06-14T00:59:44.951Z | INFO  | APP | Session graph started. | {"Caller":"SpeedGraphViewModel.OnVpnStateChanged:165"}
+2024-06-14T00:59:45.201Z | INFO  | PROCESS.COMM | Received connection details change while connected to server with IP '195.181.163.28' | {"Caller":"AppController.ConnectionDetailsChange:88"}
+2024-06-14T01:35:59.864Z | INFO  | DNS | No fresh IP addresses for host 'vpn-api.proton.me' were found in the cache. Triggering a refresh. | {"Caller":"ARecordDnsManagerBase.ResolveOrGetFromCacheAsync:93"}
+2024-06-14T01:35:59.864Z | INFO  | DNS | Attempting a UDP DNS request for host 'vpn-api.proton.me'. | {"Caller":"DnsManager.ResolveDnsAsync:66"}
+2024-06-14T01:35:59.864Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me'. | {"Caller":"DnsResolverBase.ResolveAsync:63"}
+2024-06-14T01:35:59.864Z | INFO  | DNS:NAME_SERVER | Getting name servers from available network interfaces. | {"Caller":"NameServersLoader.Get:45"}
+2024-06-14T01:35:59.890Z | INFO  | DNS:NAME_SERVER | Found 2 name servers. | {"Caller":"NameServersLoader.Get:61"}
+2024-06-14T01:35:59.890Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me' through '10.98.0.1:53'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:84"}
+2024-06-14T01:35:59.890Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me' through '192.168.1.1:53'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:84"}
+2024-06-14T01:36:00.108Z | INFO  | DNS:RESPONSE | The endpoint '10.98.0.1:53' responded successfully to the DNS query of host 'vpn-api.proton.me'. | {"Caller":"DnsOverUdpResolver.ResolveAsync:122"}
+2024-06-14T01:36:00.108Z | INFO  | DNS:RESPONSE | 1 records were received for host 'vpn-api.proton.me' with DNS over UDP endpoint '10.98.0.1:53'. TTL is 17 seconds. | {"Caller":"DnsOverUdpResolver.ResolveAsync:129"}
+2024-06-14T01:36:00.108Z | INFO  | DNS:RESPONSE | Created DNS response entity for host 'vpn-api.proton.me' with 1 IP addresses and an expiration date in UTC of 6/14/2024 1:36:17 AM based on a TTL of 00:00:17. | {"Caller":"DnsResolverBase.CreateDnsResponseWithIpAddresses:163"}
+2024-06-14T01:36:00.108Z | INFO  | DNS:RESPONSE | Successfully resolved host 'vpn-api.proton.me'. | {"Caller":"DnsResolverBase.LogResult:80"}
+2024-06-14T01:36:00.108Z | INFO  | DNS | The UDP DNS request was successful for host 'vpn-api.proton.me'. Saving to cache. | {"Caller":"DnsManager.ResolveDnsAsync:71"}
+2024-06-14T01:36:00.132Z | INFO  | SETTINGS:CHANGED | Setting 'DnsCache' changed from 'null' to '83583Z","ExpirationDateTimeUtc":"2024-06-14T01:36:17.1083583Z"}}'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T01:36:00.132Z | INFO  | DNS | The DNS over UDP resolver through '192.168.1.1:53' was canceled when resolving host 'vpn-api.proton.me'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:94"}
+2024-06-14T01:36:00.132Z | INFO  | API:REQUEST | GET "https://185.159.159.148/vpn/servers/wIf4EwZJPua4QOF9PcUhOvWZygiP2sDbUz_QYmpazzHGVM7a3kQV7V2n-ZmamqB184IzOr_iZAaWsbTmTE4gRQ==" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T01:36:01.252Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/vpn/servers/wIf4EwZJPua4QOF9PcUhOvWZygiP2sDbUz_QYmpazzHGVM7a3kQV7V2n-ZmamqB184IzOr_iZAaWsbTmTE4gRQ==": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T01:46:57.359Z | INFO  | DNS | No fresh IP addresses for host 'vpn-api.proton.me' were found in the cache. Triggering a refresh. | {"Caller":"ARecordDnsManagerBase.ResolveOrGetFromCacheAsync:93"}
+2024-06-14T01:46:57.359Z | INFO  | DNS | Attempting a UDP DNS request for host 'vpn-api.proton.me'. | {"Caller":"DnsManager.ResolveDnsAsync:66"}
+2024-06-14T01:46:57.359Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me'. | {"Caller":"DnsResolverBase.ResolveAsync:63"}
+2024-06-14T01:46:57.359Z | INFO  | DNS:NAME_SERVER | Getting name servers from available network interfaces. | {"Caller":"NameServersLoader.Get:45"}
+2024-06-14T01:46:57.384Z | INFO  | DNS:NAME_SERVER | Found 2 name servers. | {"Caller":"NameServersLoader.Get:61"}
+2024-06-14T01:46:57.384Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me' through '10.98.0.1:53'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:84"}
+2024-06-14T01:46:57.385Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me' through '192.168.1.1:53'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:84"}
+2024-06-14T01:46:57.386Z | INFO  | DNS:RESPONSE | The endpoint '10.98.0.1:53' responded successfully to the DNS query of host 'vpn-api.proton.me'. | {"Caller":"DnsOverUdpResolver.ResolveAsync:122"}
+2024-06-14T01:46:57.386Z | INFO  | DNS:RESPONSE | 1 records were received for host 'vpn-api.proton.me' with DNS over UDP endpoint '10.98.0.1:53'. TTL is 17 seconds. | {"Caller":"DnsOverUdpResolver.ResolveAsync:129"}
+2024-06-14T01:46:57.386Z | INFO  | DNS:RESPONSE | Created DNS response entity for host 'vpn-api.proton.me' with 1 IP addresses and an expiration date in UTC of 6/14/2024 1:47:14 AM based on a TTL of 00:00:17. | {"Caller":"DnsResolverBase.CreateDnsResponseWithIpAddresses:163"}
+2024-06-14T01:46:57.386Z | INFO  | DNS:RESPONSE | The endpoint '192.168.1.1:53' responded successfully to the DNS query of host 'vpn-api.proton.me'. | {"Caller":"DnsOverUdpResolver.ResolveAsync:122"}
+2024-06-14T01:46:57.386Z | INFO  | DNS:RESPONSE | 1 records were received for host 'vpn-api.proton.me' with DNS over UDP endpoint '192.168.1.1:53'. TTL is 17 seconds. | {"Caller":"DnsOverUdpResolver.ResolveAsync:129"}
+2024-06-14T01:46:57.386Z | INFO  | DNS:RESPONSE | Created DNS response entity for host 'vpn-api.proton.me' with 1 IP addresses and an expiration date in UTC of 6/14/2024 1:47:14 AM based on a TTL of 00:00:17. | {"Caller":"DnsResolverBase.CreateDnsResponseWithIpAddresses:163"}
+2024-06-14T01:46:57.386Z | INFO  | DNS:RESPONSE | Successfully resolved host 'vpn-api.proton.me'. | {"Caller":"DnsResolverBase.LogResult:80"}
+2024-06-14T01:46:57.386Z | INFO  | DNS | The UDP DNS request was successful for host 'vpn-api.proton.me'. Saving to cache. | {"Caller":"DnsManager.ResolveDnsAsync:71"}
+2024-06-14T01:46:57.410Z | INFO  | SETTINGS:CHANGED | Setting 'DnsCache' changed from 'null' to '84792Z","ExpirationDateTimeUtc":"2024-06-14T01:09:21.2884792Z"}}'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T01:46:57.410Z | INFO  | API:REQUEST | GET "https://185.159.159.148/core/v4/settings" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T01:46:58.448Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/core/v4/settings": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T01:47:21.547Z | INFO  | DNS | No fresh IP addresses for host 'vpn-api.proton.me' were found in the cache. Triggering a refresh. | {"Caller":"ARecordDnsManagerBase.ResolveOrGetFromCacheAsync:93"}
+2024-06-14T01:47:21.547Z | INFO  | DNS | Attempting a UDP DNS request for host 'vpn-api.proton.me'. | {"Caller":"DnsManager.ResolveDnsAsync:66"}
+2024-06-14T01:47:21.548Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me'. | {"Caller":"DnsResolverBase.ResolveAsync:63"}
+2024-06-14T01:47:21.548Z | INFO  | DNS:NAME_SERVER | Getting name servers from available network interfaces. | {"Caller":"NameServersLoader.Get:45"}
+2024-06-14T01:47:21.575Z | INFO  | DNS:NAME_SERVER | Found 2 name servers. | {"Caller":"NameServersLoader.Get:61"}
+2024-06-14T01:47:21.575Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me' through '10.98.0.1:53'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:84"}
+2024-06-14T01:47:21.576Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me' through '192.168.1.1:53'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:84"}
+2024-06-14T01:47:21.577Z | INFO  | DNS:RESPONSE | The endpoint '192.168.1.1:53' responded successfully to the DNS query of host 'vpn-api.proton.me'. | {"Caller":"DnsOverUdpResolver.ResolveAsync:122"}
+2024-06-14T01:47:21.577Z | INFO  | DNS:RESPONSE | 1 records were received for host 'vpn-api.proton.me' with DNS over UDP endpoint '192.168.1.1:53'. TTL is 17 seconds. | {"Caller":"DnsOverUdpResolver.ResolveAsync:129"}
+2024-06-14T01:47:21.577Z | INFO  | DNS:RESPONSE | Created DNS response entity for host 'vpn-api.proton.me' with 1 IP addresses and an expiration date in UTC of 6/14/2024 1:47:38 AM based on a TTL of 00:00:17. | {"Caller":"DnsResolverBase.CreateDnsResponseWithIpAddresses:163"}
+2024-06-14T01:47:21.578Z | INFO  | DNS | The DNS over UDP resolver through '10.98.0.1:53' was canceled when resolving host 'vpn-api.proton.me'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:94"}
+2024-06-14T01:47:21.578Z | INFO  | DNS:RESPONSE | Successfully resolved host 'vpn-api.proton.me'. | {"Caller":"DnsResolverBase.LogResult:80"}
+2024-06-14T01:47:21.578Z | INFO  | DNS | The UDP DNS request was successful for host 'vpn-api.proton.me'. Saving to cache. | {"Caller":"DnsManager.ResolveDnsAsync:71"}
+2024-06-14T01:47:21.598Z | INFO  | SETTINGS:CHANGED | Setting 'DnsCache' changed from 'null' to '79881Z","ExpirationDateTimeUtc":"2024-06-14T01:47:38.5779881Z"}}'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T01:47:21.598Z | INFO  | API:REQUEST | GET "https://185.159.159.148/core/v4/notifications?FullScreenImageSupport=png&FullScreenImageWidth=1024&FullScreenImageHeight=768" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T01:47:22.086Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/core/v4/notifications?FullScreenImageSupport=png&FullScreenImageWidth=1024&FullScreenImageHeight=768": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T01:47:22.106Z | INFO  | SETTINGS:CHANGED | Setting 'Announcements' changed from 'null' to '[]'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T01:54:13.631Z | INFO  | DNS | No fresh IP addresses for host 'vpn-api.proton.me' were found in the cache. Triggering a refresh. | {"Caller":"ARecordDnsManagerBase.ResolveOrGetFromCacheAsync:93"}
+2024-06-14T01:54:13.631Z | INFO  | DNS | Attempting a UDP DNS request for host 'vpn-api.proton.me'. | {"Caller":"DnsManager.ResolveDnsAsync:66"}
+2024-06-14T01:54:13.631Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me'. | {"Caller":"DnsResolverBase.ResolveAsync:63"}
+2024-06-14T01:54:13.631Z | INFO  | DNS:NAME_SERVER | Getting name servers from available network interfaces. | {"Caller":"NameServersLoader.Get:45"}
+2024-06-14T01:54:13.655Z | INFO  | DNS:NAME_SERVER | Found 2 name servers. | {"Caller":"NameServersLoader.Get:61"}
+2024-06-14T01:54:13.655Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me' through '10.98.0.1:53'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:84"}
+2024-06-14T01:54:13.655Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me' through '192.168.1.1:53'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:84"}
+2024-06-14T01:54:13.880Z | INFO  | DNS:RESPONSE | The endpoint '10.98.0.1:53' responded successfully to the DNS query of host 'vpn-api.proton.me'. | {"Caller":"DnsOverUdpResolver.ResolveAsync:122"}
+2024-06-14T01:54:13.880Z | INFO  | DNS:RESPONSE | 1 records were received for host 'vpn-api.proton.me' with DNS over UDP endpoint '10.98.0.1:53'. TTL is 17 seconds. | {"Caller":"DnsOverUdpResolver.ResolveAsync:129"}
+2024-06-14T01:54:13.880Z | INFO  | DNS:RESPONSE | Created DNS response entity for host 'vpn-api.proton.me' with 1 IP addresses and an expiration date in UTC of 6/14/2024 1:54:30 AM based on a TTL of 00:00:17. | {"Caller":"DnsResolverBase.CreateDnsResponseWithIpAddresses:163"}
+2024-06-14T01:54:13.880Z | INFO  | DNS:RESPONSE | Successfully resolved host 'vpn-api.proton.me'. | {"Caller":"DnsResolverBase.LogResult:80"}
+2024-06-14T01:54:13.880Z | INFO  | DNS | The UDP DNS request was successful for host 'vpn-api.proton.me'. Saving to cache. | {"Caller":"DnsManager.ResolveDnsAsync:71"}
+2024-06-14T01:54:13.900Z | INFO  | SETTINGS:CHANGED | Setting 'DnsCache' changed from 'null' to '84792Z","ExpirationDateTimeUtc":"2024-06-14T01:09:21.2884792Z"}}'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T01:54:13.900Z | INFO  | DNS | The DNS over UDP resolver through '192.168.1.1:53' was canceled when resolving host 'vpn-api.proton.me'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:94"}
+2024-06-14T01:54:13.900Z | INFO  | API:REQUEST | GET "https://185.159.159.148/vpn/v2" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T01:54:14.739Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/vpn/v2": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T02:03:58.034Z | INFO  | APP:STOP | The app is exiting. Requesting services to stop. | {"Caller":"Bootstraper.OnExit:215"}
+2024-06-14T02:03:58.034Z | INFO  | APP | The tray icon is now hidden. | {"Caller":"Bootstraper.OnExit:216"}
+2024-06-14T02:03:58.044Z | INFO  | APP.SERVICE:STOP | Stopping the service "ProtonVPN Service" | {"Caller":"LoggingService.Logged:89"}
+2024-06-14T02:03:58.049Z | INFO  | APP.SERVICE:STOP | Stopping the service "ProtonVPN Service" succeeded | {"Caller":"LoggingService.Logged:93"}
+2024-06-14T02:03:58.189Z | INFO  | APP:STOP | The app is exiting. Requesting services to stop. | {"Caller":"Bootstraper.OnExit:215"}
+2024-06-14T02:03:58.189Z | INFO  | APP | The tray icon is now hidden. | {"Caller":"Bootstraper.OnExit:216"}
+2024-06-14T02:03:58.190Z | INFO  | APP.SERVICE:STOP | Stopping the service "ProtonVPN Service" | {"Caller":"LoggingService.Logged:89"}
+2024-06-14T02:03:58.190Z | ERROR | APP.SERVICE:STOP_FAILED | Stopping the service "ProtonVPN Service" failed: Cannot stop 'ProtonVPN Service' service on computer '.'. ---> The service cannot accept control messages at this time. | {"Caller":"LoggingService.Logged:124"}
+2024-06-14T03:38:51.772Z | INFO  | APP:START | = Booting ProtonVPN version: 3.2.11 os: Microsoft Windows NT 10.0.19045.0 64 bit = | {"Caller":"Bootstraper.OnStartup:148"}
+2024-06-14T03:38:51.776Z | INFO  | APP | Checking for files to be deleted in log folder 'C:\Users\Vampeyer\AppData\Local\ProtonVPN\Logs'. The maximum number of files allowed is 10. | {"Caller":"LogCleaner.Clean:39"}
+2024-06-14T03:38:51.776Z | INFO  | APP | The folder 'C:\Users\Vampeyer\AppData\Local\ProtonVPN\Logs' has 2 files. | {"Caller":"LogCleaner.Clean:42"}
+2024-06-14T03:38:51.777Z | INFO  | APP | The log folder has 0 files exceeding the limit of 10 files. | {"Caller":"LogCleaner.GetFilesExceedingLimit:81"}
+2024-06-14T03:38:51.777Z | INFO  | APP | The log folder has 0 old files with a last write date before 2024-05-17T03:38:51.7773984Z. | {"Caller":"LogCleaner.GetOldFiles:113"}
+2024-06-14T03:38:51.778Z | INFO  | APP | The log folder has 0 files to delete. | {"Caller":"LogCleaner.GetFilesToDelete:69"}
+2024-06-14T03:38:51.895Z | INFO  | APP | Servers updated. Num of servers: 0 -> 5238 Num of countries: 0 -> 91 | {"Caller":"ServerManager.LogServerListUpdate:84"}
+2024-06-14T03:38:51.913Z | INFO  | SETTINGS:CHANGED | Setting 'AppStartCounter' changed from '14' to '15'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T03:38:52.026Z | INFO  | DNS | No fresh IP addresses for host 'vpn-api.proton.me' were found in the cache. Triggering a refresh. | {"Caller":"ARecordDnsManagerBase.ResolveOrGetFromCacheAsync:93"}
+2024-06-14T03:38:52.026Z | INFO  | DNS | Attempting a UDP DNS request for host 'vpn-api.proton.me'. | {"Caller":"DnsManager.ResolveDnsAsync:66"}
+2024-06-14T03:38:52.027Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me'. | {"Caller":"DnsResolverBase.ResolveAsync:63"}
+2024-06-14T03:38:52.095Z | INFO  | DNS:NAME_SERVER | Getting name servers from available network interfaces. | {"Caller":"NameServersLoader.Get:45"}
+2024-06-14T03:38:52.123Z | INFO  | DNS:NAME_SERVER | Found 1 name servers. | {"Caller":"NameServersLoader.Get:61"}
+2024-06-14T03:38:52.123Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me' through '192.168.1.1:53'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:84"}
+2024-06-14T03:38:52.588Z | INFO  | APP.SERVICE:START | Starting the service "ProtonVPN Service" | {"Caller":"LoggingService.Logged:89"}
+2024-06-14T03:38:52.628Z | INFO  | PROCESS.COMM:SERVER_START | A new gRPC Server has been created using Port 49693. | {"Caller":"GrpcServerBase.CreateAndStart:48"}
+2024-06-14T03:38:52.628Z | INFO  | PROCESS.COMM | Sending app gRPC server port 49693 to service. | {"Caller":"Bootstraper.StartGrpcServerAsync:202"}
+2024-06-14T03:38:52.699Z | INFO  | DNS:RESPONSE | The endpoint '192.168.1.1:53' responded successfully to the DNS query of host 'vpn-api.proton.me'. | {"Caller":"DnsOverUdpResolver.ResolveAsync:122"}
+2024-06-14T03:38:52.700Z | INFO  | DNS:RESPONSE | 1 records were received for host 'vpn-api.proton.me' with DNS over UDP endpoint '192.168.1.1:53'. TTL is 17 seconds. | {"Caller":"DnsOverUdpResolver.ResolveAsync:129"}
+2024-06-14T03:38:52.705Z | INFO  | DNS:RESPONSE | Created DNS response entity for host 'vpn-api.proton.me' with 1 IP addresses and an expiration date in UTC of 6/14/2024 3:39:09 AM based on a TTL of 00:00:17. | {"Caller":"DnsResolverBase.CreateDnsResponseWithIpAddresses:163"}
+2024-06-14T03:38:52.706Z | INFO  | DNS:RESPONSE | Successfully resolved host 'vpn-api.proton.me'. | {"Caller":"DnsResolverBase.LogResult:80"}
+2024-06-14T03:38:52.706Z | INFO  | DNS | The UDP DNS request was successful for host 'vpn-api.proton.me'. Saving to cache. | {"Caller":"DnsManager.ResolveDnsAsync:71"}
+2024-06-14T03:38:52.729Z | INFO  | APP | NetShield Stats - Request timeout set to 00:01:00.2317640. | {"Caller":"NetShieldStatsManager..ctor:74"}
+2024-06-14T03:38:52.730Z | INFO  | SETTINGS:CHANGED | Setting 'DnsCache' changed from 'null' to '13447Z","ExpirationDateTimeUtc":"2024-06-14T03:39:09.7013447Z"}}'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T03:38:52.731Z | INFO  | API:REQUEST | GET "https://185.159.159.148/feature/v2/frontend" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T03:38:52.731Z | INFO  | API:REQUEST | GET "https://185.159.159.148/vpn/v1/featureconfig/dynamic-bug-reports" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T03:38:52.741Z | INFO  | API:REQUEST | GET "https://185.159.159.148/vpn/v2" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T03:38:53.300Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/vpn/v1/featureconfig/dynamic-bug-reports": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T03:38:53.572Z | ERROR | PROCESS.COMM:ERROR | Failed to get the Service Controller within the allotted time '00:00:01'. | {"Caller":"AppGrpcClient.GetServiceControllerOrThrowAsync:145"}
+2024-06-14T03:38:53.638Z | ERROR | PROCESS.COMM:ERROR | Failed to get the Service Controller within the allotted time '00:00:01'. | {"Caller":"AppGrpcClient.GetServiceControllerOrThrowAsync:145"}
+2024-06-14T03:38:53.663Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/feature/v2/frontend": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T03:38:53.663Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/vpn/v2": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T03:38:53.711Z | INFO  | SETTINGS:CHANGED | Setting 'FeatureFlags' changed from 'BR0S8nSmTsHdKafW7CRpCVvvkuWMdiCd8YLINGLc05oEoQ+jZPi8fTMFHjRQw=="' to 'ALikyJmemS1AcHN3z6i6BynOooUdbDTgQ+j6FHu5yuc+GgvSLxsNg+MJkDFpiw="'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T03:38:53.867Z | INFO  | PROCESS.COMM:CLIENT_START | A new gRPC Client has been created to Server Port 49701. | {"Caller":"GrpcClientBase.CreateWithPortAsync:52"}
+2024-06-14T03:38:53.867Z | INFO  | PROCESS.COMM | Sending the app gRPC server port 49693 to service. | {"Caller":"AppGrpcClient.RegisterStateConsumerAsync:94"}
+2024-06-14T03:38:53.870Z | INFO  | API:REQUEST | GET "https://185.159.159.148/vpn/location" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T03:38:53.954Z | INFO  | APP.SERVICE:START | Starting the service "ProtonVPN Service" succeeded | {"Caller":"LoggingService.Logged:93"}
+2024-06-14T03:38:53.958Z | INFO  | PROCESS.COMM:CLIENT_START | A new gRPC Client has been created to Server Port 49701. | {"Caller":"GrpcClientBase.CreateWithPortAsync:52"}
+2024-06-14T03:38:53.960Z | INFO  | PROCESS.COMM:CLIENT_STOP | A gRPC Client has been stopped. Server endpoint: 'localhost:49701' | {"Caller":"GrpcClientBase.ShutdownChannelIfExists:72"}
+2024-06-14T03:38:53.960Z | INFO  | PROCESS.COMM | Sending the app gRPC server port 49693 to service. | {"Caller":"AppGrpcClient.RegisterStateConsumerAsync:94"}
+2024-06-14T03:38:53.961Z | ERROR | APP.SERVICE:COMM_FAILED | The invocation of 'RegisterVpnClient' on VPN Service channel returned an exception and will be retried. Exception message: Failed to get the Service Controller within the allotted time '00:00:01'. | {"Caller":"ServiceControllerCaller.LogError:87"}
+2024-06-14T03:38:53.963Z | ERROR | APP.SERVICE:COMM_FAILED | The invocation of 'CheckForUpdates' on VPN Service channel returned an exception and will be retried. Exception message: Failed to get the Service Controller within the allotted time '00:00:01'. | {"Caller":"ServiceControllerCaller.LogError:87"}
+2024-06-14T03:38:53.993Z | INFO  | PROCESS.COMM | Received update state change with status Checking. | {"Caller":"AppController.UpdateStateChange:95"}
+2024-06-14T03:38:54.140Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/vpn/location": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T03:38:54.144Z | INFO  | API:REQUEST | GET "https://185.159.159.148/vpn/v2/clientconfig" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T03:38:54.145Z | INFO  | API:REQUEST | GET "https://185.159.159.148/vpn/logicals?SignServer=Server.EntryIP,Server.Label" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T03:38:54.326Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/vpn/v2/clientconfig": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T03:38:54.349Z | INFO  | SETTINGS:CHANGED | Setting 'OpenVpnTcpPorts' changed from 'null' to '[443,7770,8443]'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T03:38:54.363Z | INFO  | SETTINGS:CHANGED | Setting 'OpenVpnUdpPorts' changed from 'null' to '[80,51820,4569,1194,5060]'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T03:38:54.376Z | INFO  | SETTINGS:CHANGED | Setting 'WireGuardPorts' changed from 'null' to '[443,88,1224,51820,500,4500]'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T03:38:54.378Z | INFO  | API:REQUEST | GET "https://185.159.159.148/vpn/streamingservices" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T03:38:55.055Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/vpn/logicals?SignServer=Server.EntryIP,Server.Label": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T03:38:56.436Z | INFO  | PROCESS.COMM | Received update state change with status None. | {"Caller":"AppController.UpdateStateChange:95"}
+2024-06-14T03:38:56.436Z | INFO  | PROCESS.COMM | Received update state change with status Checking. | {"Caller":"AppController.UpdateStateChange:95"}
+2024-06-14T03:38:57.000Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/vpn/streamingservices": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T03:38:57.012Z | INFO  | APP | The user is logged in, tray icon is now visible. | {"Caller":"TrayIcon.OnUserLoggedIn:152"}
+2024-06-14T03:38:57.036Z | INFO  | SETTINGS:CHANGED | Setting 'SplitTunnelingBlockApps' changed from 'null' to '[]'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T03:38:57.036Z | INFO  | USER.CERT:SCHEDULE_REFRESH | User certificate refresh scheduled for every '00:04:00.1686532'. | {"Caller":"AuthCertificateUpdater.OnUserLoggedIn:60"}
+2024-06-14T03:38:57.041Z | INFO  | APP.SERVICE | Setting "PortForwardingEnabled" changed, updating service settings. | {"Caller":"SettingsServiceClientManager.OnAppSettingsChanged:92"}
+2024-06-14T03:38:57.045Z | INFO  | APP.SERVICE | Setting "NetShieldEnabled" changed, updating service settings. | {"Caller":"SettingsServiceClientManager.OnAppSettingsChanged:92"}
+2024-06-14T03:38:57.052Z | INFO  | APP.SERVICE:START | Starting the service "ProtonVPN Service" | {"Caller":"LoggingService.Logged:89"}
+2024-06-14T03:38:57.053Z | WARN  | APP.SERVICE:START_FAILED | Starting the service "ProtonVPN Service" : Already running | {"Caller":"LoggingService.Logged:135"}
+2024-06-14T03:38:57.065Z | INFO  | PROCESS.COMM | Received VPN Status 'Disconnected', NetworkBlocked: False Error: 'None', EndpointIp: '', Label: '', VpnProtocol: 'Smart', OpenVpnAdapter: '' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T03:38:57.065Z | INFO  | PROCESS.COMM | Received VPN Status 'Disconnected', NetworkBlocked: False Error: 'None', EndpointIp: '', Label: '', VpnProtocol: 'Smart', OpenVpnAdapter: '' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T03:38:57.065Z | INFO  | PROCESS.COMM | Received VPN Status 'Disconnected', NetworkBlocked: False Error: 'None', EndpointIp: '', Label: '', VpnProtocol: 'Smart', OpenVpnAdapter: '' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T03:38:57.251Z | INFO  | PROCESS.COMM | Received VPN Status 'Disconnected', NetworkBlocked: False Error: 'None', EndpointIp: '', Label: '', VpnProtocol: 'Smart', OpenVpnAdapter: '' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T03:38:57.417Z | INFO  | APP | Servers updated. Num of servers: 5238 Num of countries: 91 | {"Caller":"ServerManager.LogServerListUpdate:84"}
+2024-06-14T03:38:58.244Z | INFO  | API:REQUEST | GET "https://185.159.159.148/core/v4/notifications?FullScreenImageSupport=png&FullScreenImageWidth=1024&FullScreenImageHeight=768" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T03:38:58.483Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/core/v4/notifications?FullScreenImageSupport=png&FullScreenImageWidth=1024&FullScreenImageHeight=768": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T03:38:58.509Z | INFO  | SETTINGS:CHANGED | Setting 'Announcements' changed from 'null' to '[]'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T03:38:58.764Z | WARN  | OS | Incorrect system time detected. | {"Caller":"SystemTimeValidator.ValidateTime:58"}
+2024-06-14T03:39:00.159Z | INFO  | CONN.CONNECT:TRIGGER | Automatically connecting on app start | {"Caller":"AutoConnect.LoadAsync:58"}
+2024-06-14T03:39:00.160Z | INFO  | CONN.CONNECT:TRIGGER | [VpnManager] Quick connect requested. | {"Caller":"AutoConnect.LoadAsync:59"}
+2024-06-14T03:39:00.193Z | INFO  | CONN.CONNECT | Connect requested | {"Caller":"ProfileConnector.Connect:396"}
+2024-06-14T03:39:00.248Z | INFO  | PROCESS.COMM | Received VPN Status 'Disconnected', NetworkBlocked: False Error: 'None', EndpointIp: '', Label: '', VpnProtocol: 'Smart', OpenVpnAdapter: '' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T03:39:00.259Z | INFO  | PROCESS.COMM | Received VPN Status 'Pinging', NetworkBlocked: True Error: 'None', EndpointIp: '87.249.134.133', Label: '2', VpnProtocol: 'Smart', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T03:39:06.708Z | INFO  | PROCESS.COMM | Received VPN Status 'Reconnecting', NetworkBlocked: True Error: 'None', EndpointIp: '87.249.134.133', Label: '2', VpnProtocol: 'OpenVpnTcp', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T03:39:07.920Z | INFO  | PROCESS.COMM | Received VPN Status 'Waiting', NetworkBlocked: True Error: 'None', EndpointIp: '87.249.134.133', Label: '2', VpnProtocol: 'OpenVpnTcp', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T03:39:07.961Z | INFO  | PROCESS.COMM | Received VPN Status 'Authenticating', NetworkBlocked: True Error: 'None', EndpointIp: '87.249.134.133', Label: '2', VpnProtocol: 'OpenVpnTcp', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T03:39:08.422Z | INFO  | PROCESS.COMM | Received VPN Status 'AssigningIp', NetworkBlocked: True Error: 'None', EndpointIp: '87.249.134.133', Label: '2', VpnProtocol: 'OpenVpnTcp', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T03:39:16.871Z | INFO  | PROCESS.COMM | Received VPN Status 'Connected', NetworkBlocked: True Error: 'None', EndpointIp: '87.249.134.133', Label: '2', VpnProtocol: 'OpenVpnTcp', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T03:39:16.874Z | INFO  | PROCESS.COMM | Received connection details change while connected to server with IP '87.249.134.137' | {"Caller":"AppController.ConnectionDetailsChange:88"}
+2024-06-14T03:39:16.896Z | INFO  | APP | Session graph started. | {"Caller":"SpeedGraphViewModel.OnVpnStateChanged:165"}
+2024-06-14T03:39:17.110Z | INFO  | PROCESS.COMM | Received connection details change while connected to server with IP '87.249.134.136' | {"Caller":"AppController.ConnectionDetailsChange:88"}
+2024-06-14T04:37:38.952Z | INFO  | PROCESS.COMM | Received VPN Status 'RetrievingConfiguration', NetworkBlocked: True Error: 'None', EndpointIp: '87.249.134.133', Label: '2', VpnProtocol: 'OpenVpnTcp', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T04:37:38.952Z | INFO  | PROCESS.COMM | Received VPN Status 'Authenticating', NetworkBlocked: True Error: 'None', EndpointIp: '87.249.134.133', Label: '2', VpnProtocol: 'OpenVpnTcp', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T04:37:38.952Z | INFO  | PROCESS.COMM | Received VPN Status 'AssigningIp', NetworkBlocked: True Error: 'None', EndpointIp: '87.249.134.133', Label: '2', VpnProtocol: 'OpenVpnTcp', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T04:37:38.953Z | INFO  | PROCESS.COMM | Received VPN Status 'Waiting', NetworkBlocked: True Error: 'None', EndpointIp: '87.249.134.133', Label: '2', VpnProtocol: 'OpenVpnTcp', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T04:37:38.953Z | INFO  | PROCESS.COMM | Received VPN Status 'Authenticating', NetworkBlocked: True Error: 'None', EndpointIp: '87.249.134.133', Label: '2', VpnProtocol: 'OpenVpnTcp', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T04:37:38.953Z | INFO  | PROCESS.COMM | Received VPN Status 'RetrievingConfiguration', NetworkBlocked: True Error: 'None', EndpointIp: '87.249.134.133', Label: '2', VpnProtocol: 'OpenVpnTcp', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T04:37:38.953Z | INFO  | PROCESS.COMM | Received VPN Status 'AssigningIp', NetworkBlocked: True Error: 'None', EndpointIp: '87.249.134.133', Label: '2', VpnProtocol: 'OpenVpnTcp', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T04:37:38.953Z | INFO  | PROCESS.COMM | Received VPN Status 'Connected', NetworkBlocked: True Error: 'None', EndpointIp: '87.249.134.133', Label: '2', VpnProtocol: 'OpenVpnTcp', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T04:37:38.953Z | INFO  | PROCESS.COMM | Received connection details change while connected to server with IP '87.249.134.136' | {"Caller":"AppController.ConnectionDetailsChange:88"}
+2024-06-14T04:37:38.953Z | INFO  | PROCESS.COMM | Received connection details change while connected to server with IP '87.249.134.134' | {"Caller":"AppController.ConnectionDetailsChange:88"}
+2024-06-14T04:37:38.953Z | INFO  | PROCESS.COMM | Received VPN Status 'Reconnecting', NetworkBlocked: True Error: 'None', EndpointIp: '87.249.134.133', Label: '2', VpnProtocol: 'OpenVpnTcp', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T04:37:38.953Z | INFO  | PROCESS.COMM | Received VPN Status 'Waiting', NetworkBlocked: True Error: 'None', EndpointIp: '87.249.134.133', Label: '2', VpnProtocol: 'OpenVpnTcp', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T04:37:38.953Z | INFO  | PROCESS.COMM | Received connection details change while connected to server with IP '87.249.134.136' | {"Caller":"AppController.ConnectionDetailsChange:88"}
+2024-06-14T04:37:38.953Z | INFO  | PROCESS.COMM | Received VPN Status 'Reconnecting', NetworkBlocked: True Error: 'None', EndpointIp: '87.249.134.133', Label: '2', VpnProtocol: 'OpenVpnTcp', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T04:37:38.953Z | INFO  | PROCESS.COMM | Received VPN Status 'Connected', NetworkBlocked: True Error: 'None', EndpointIp: '87.249.134.133', Label: '2', VpnProtocol: 'OpenVpnTcp', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T04:37:38.953Z | INFO  | PROCESS.COMM | Received VPN Status 'Reconnecting', NetworkBlocked: True Error: 'None', EndpointIp: '87.249.134.133', Label: '2', VpnProtocol: 'OpenVpnTcp', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T04:37:38.957Z | INFO  | APP | Session graph stopped due to VPN status change: Authenticating | {"Caller":"SpeedGraphViewModel.OnVpnStateChanged:170"}
+2024-06-14T04:37:38.980Z | INFO  | APP | Session graph started. | {"Caller":"SpeedGraphViewModel.OnVpnStateChanged:165"}
+2024-06-14T04:37:39.141Z | INFO  | APP | Session graph stopped due to VPN status change: RetrievingConfiguration | {"Caller":"SpeedGraphViewModel.OnVpnStateChanged:170"}
+2024-06-14T04:37:39.151Z | INFO  | APP | Session graph started. | {"Caller":"SpeedGraphViewModel.OnVpnStateChanged:165"}
+2024-06-14T04:37:39.164Z | INFO  | APP | Session graph stopped due to VPN status change: Reconnecting | {"Caller":"SpeedGraphViewModel.OnVpnStateChanged:170"}
+2024-06-14T04:37:49.084Z | INFO  | PROCESS.COMM | Received VPN Status 'Reconnecting', NetworkBlocked: True Error: 'None', EndpointIp: '87.249.134.133', Label: '1', VpnProtocol: 'OpenVpnTcp', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T04:37:50.222Z | INFO  | PROCESS.COMM | Received VPN Status 'Waiting', NetworkBlocked: True Error: 'None', EndpointIp: '87.249.134.133', Label: '1', VpnProtocol: 'OpenVpnTcp', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T04:37:50.281Z | INFO  | PROCESS.COMM | Received VPN Status 'Authenticating', NetworkBlocked: True Error: 'None', EndpointIp: '87.249.134.133', Label: '1', VpnProtocol: 'OpenVpnTcp', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T04:37:51.831Z | INFO  | PROCESS.COMM | Received VPN Status 'RetrievingConfiguration', NetworkBlocked: True Error: 'None', EndpointIp: '87.249.134.133', Label: '1', VpnProtocol: 'OpenVpnTcp', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T04:37:51.881Z | INFO  | PROCESS.COMM | Received VPN Status 'AssigningIp', NetworkBlocked: True Error: 'None', EndpointIp: '87.249.134.133', Label: '1', VpnProtocol: 'OpenVpnTcp', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T04:37:59.589Z | INFO  | PROCESS.COMM | Received VPN Status 'Connected', NetworkBlocked: True Error: 'None', EndpointIp: '87.249.134.133', Label: '1', VpnProtocol: 'OpenVpnTcp', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T04:37:59.589Z | INFO  | PROCESS.COMM | Received connection details change while connected to server with IP '87.249.134.137' | {"Caller":"AppController.ConnectionDetailsChange:88"}
+2024-06-14T04:37:59.597Z | INFO  | APP | Session graph started. | {"Caller":"SpeedGraphViewModel.OnVpnStateChanged:165"}
+2024-06-14T04:37:59.838Z | INFO  | PROCESS.COMM | Received connection details change while connected to server with IP '87.249.134.135' | {"Caller":"AppController.ConnectionDetailsChange:88"}
+2024-06-14T05:17:50.790Z | INFO  | DNS | No fresh IP addresses for host 'vpn-api.proton.me' were found in the cache. Triggering a refresh. | {"Caller":"ARecordDnsManagerBase.ResolveOrGetFromCacheAsync:93"}
+2024-06-14T05:17:50.790Z | INFO  | DNS | Attempting a UDP DNS request for host 'vpn-api.proton.me'. | {"Caller":"DnsManager.ResolveDnsAsync:66"}
+2024-06-14T05:17:50.790Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me'. | {"Caller":"DnsResolverBase.ResolveAsync:63"}
+2024-06-14T05:17:50.791Z | INFO  | DNS:NAME_SERVER | Getting name servers from available network interfaces. | {"Caller":"NameServersLoader.Get:45"}
+2024-06-14T05:17:50.811Z | INFO  | DNS:NAME_SERVER | Found 2 name servers. | {"Caller":"NameServersLoader.Get:61"}
+2024-06-14T05:17:50.811Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me' through '10.98.0.1:53'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:84"}
+2024-06-14T05:17:50.813Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me' through '192.168.1.1:53'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:84"}
+2024-06-14T05:17:50.869Z | INFO  | DNS:RESPONSE | The endpoint '10.98.0.1:53' responded successfully to the DNS query of host 'vpn-api.proton.me'. | {"Caller":"DnsOverUdpResolver.ResolveAsync:122"}
+2024-06-14T05:17:50.869Z | INFO  | DNS:RESPONSE | 1 records were received for host 'vpn-api.proton.me' with DNS over UDP endpoint '10.98.0.1:53'. TTL is 17 seconds. | {"Caller":"DnsOverUdpResolver.ResolveAsync:129"}
+2024-06-14T05:17:50.870Z | INFO  | DNS:RESPONSE | Created DNS response entity for host 'vpn-api.proton.me' with 1 IP addresses and an expiration date in UTC of 6/14/2024 5:18:07 AM based on a TTL of 00:00:17. | {"Caller":"DnsResolverBase.CreateDnsResponseWithIpAddresses:163"}
+2024-06-14T05:17:50.871Z | INFO  | DNS:RESPONSE | Successfully resolved host 'vpn-api.proton.me'. | {"Caller":"DnsResolverBase.LogResult:80"}
+2024-06-14T05:17:50.871Z | INFO  | DNS | The UDP DNS request was successful for host 'vpn-api.proton.me'. Saving to cache. | {"Caller":"DnsManager.ResolveDnsAsync:71"}
+2024-06-14T05:17:50.922Z | INFO  | SETTINGS:CHANGED | Setting 'DnsCache' changed from 'null' to '870025Z","ExpirationDateTimeUtc":"2024-06-14T05:18:07.870025Z"}}'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T05:17:50.922Z | INFO  | DNS | The DNS over UDP resolver through '192.168.1.1:53' was canceled when resolving host 'vpn-api.proton.me'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:94"}
+2024-06-14T05:17:50.922Z | INFO  | API:REQUEST | GET "https://185.159.159.148/vpn/servers/55K2X3kEMoE7CYwCVc7BZDglfc_qdWC4hJ0F05pEXzYxaDHY5UMrWWoXB8tsYsJPkxSPdbdaJurA7CXZdG8eCg==" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T05:17:51.501Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/vpn/servers/55K2X3kEMoE7CYwCVc7BZDglfc_qdWC4hJ0F05pEXzYxaDHY5UMrWWoXB8tsYsJPkxSPdbdaJurA7CXZdG8eCg==": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T05:53:51.902Z | INFO  | DNS | No fresh IP addresses for host 'vpn-api.proton.me' were found in the cache. Triggering a refresh. | {"Caller":"ARecordDnsManagerBase.ResolveOrGetFromCacheAsync:93"}
+2024-06-14T05:53:51.902Z | INFO  | DNS | Attempting a UDP DNS request for host 'vpn-api.proton.me'. | {"Caller":"DnsManager.ResolveDnsAsync:66"}
+2024-06-14T05:53:51.902Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me'. | {"Caller":"DnsResolverBase.ResolveAsync:63"}
+2024-06-14T05:53:51.902Z | INFO  | DNS:NAME_SERVER | Getting name servers from available network interfaces. | {"Caller":"NameServersLoader.Get:45"}
+2024-06-14T05:53:51.921Z | INFO  | DNS:NAME_SERVER | Found 2 name servers. | {"Caller":"NameServersLoader.Get:61"}
+2024-06-14T05:53:51.921Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me' through '10.98.0.1:53'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:84"}
+2024-06-14T05:53:51.922Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me' through '192.168.1.1:53'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:84"}
+2024-06-14T05:53:52.168Z | INFO  | DNS:RESPONSE | The endpoint '10.98.0.1:53' responded successfully to the DNS query of host 'vpn-api.proton.me'. | {"Caller":"DnsOverUdpResolver.ResolveAsync:122"}
+2024-06-14T05:53:52.168Z | INFO  | DNS:RESPONSE | 1 records were received for host 'vpn-api.proton.me' with DNS over UDP endpoint '10.98.0.1:53'. TTL is 17 seconds. | {"Caller":"DnsOverUdpResolver.ResolveAsync:129"}
+2024-06-14T05:53:52.168Z | INFO  | DNS:RESPONSE | Created DNS response entity for host 'vpn-api.proton.me' with 1 IP addresses and an expiration date in UTC of 6/14/2024 5:54:09 AM based on a TTL of 00:00:17. | {"Caller":"DnsResolverBase.CreateDnsResponseWithIpAddresses:163"}
+2024-06-14T05:53:52.169Z | INFO  | DNS | The DNS over UDP resolver through '192.168.1.1:53' was canceled when resolving host 'vpn-api.proton.me'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:94"}
+2024-06-14T05:53:52.169Z | INFO  | DNS:RESPONSE | Successfully resolved host 'vpn-api.proton.me'. | {"Caller":"DnsResolverBase.LogResult:80"}
+2024-06-14T05:53:52.169Z | INFO  | DNS | The UDP DNS request was successful for host 'vpn-api.proton.me'. Saving to cache. | {"Caller":"DnsManager.ResolveDnsAsync:71"}
+2024-06-14T05:53:52.192Z | INFO  | SETTINGS:CHANGED | Setting 'DnsCache' changed from 'null' to '85329Z","ExpirationDateTimeUtc":"2024-06-14T05:54:09.1685329Z"}}'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T05:53:52.192Z | INFO  | API:REQUEST | GET "https://185.159.159.148/core/v4/notifications?FullScreenImageSupport=png&FullScreenImageWidth=1024&FullScreenImageHeight=768" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T05:53:53.069Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/core/v4/notifications?FullScreenImageSupport=png&FullScreenImageWidth=1024&FullScreenImageHeight=768": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T05:53:53.090Z | INFO  | SETTINGS:CHANGED | Setting 'Announcements' changed from 'null' to '[]'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T05:57:41.990Z | INFO  | DNS | No fresh IP addresses for host 'vpn-api.proton.me' were found in the cache. Triggering a refresh. | {"Caller":"ARecordDnsManagerBase.ResolveOrGetFromCacheAsync:93"}
+2024-06-14T05:57:41.990Z | INFO  | DNS | Attempting a UDP DNS request for host 'vpn-api.proton.me'. | {"Caller":"DnsManager.ResolveDnsAsync:66"}
+2024-06-14T05:57:41.990Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me'. | {"Caller":"DnsResolverBase.ResolveAsync:63"}
+2024-06-14T05:57:41.991Z | INFO  | DNS:NAME_SERVER | Getting name servers from available network interfaces. | {"Caller":"NameServersLoader.Get:45"}
+2024-06-14T05:57:42.014Z | INFO  | DNS:NAME_SERVER | Found 2 name servers. | {"Caller":"NameServersLoader.Get:61"}
+2024-06-14T05:57:42.014Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me' through '10.98.0.1:53'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:84"}
+2024-06-14T05:57:42.015Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me' through '192.168.1.1:53'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:84"}
+2024-06-14T05:57:42.265Z | INFO  | DNS:RESPONSE | The endpoint '10.98.0.1:53' responded successfully to the DNS query of host 'vpn-api.proton.me'. | {"Caller":"DnsOverUdpResolver.ResolveAsync:122"}
+2024-06-14T05:57:42.265Z | INFO  | DNS:RESPONSE | 1 records were received for host 'vpn-api.proton.me' with DNS over UDP endpoint '10.98.0.1:53'. TTL is 17 seconds. | {"Caller":"DnsOverUdpResolver.ResolveAsync:129"}
+2024-06-14T05:57:42.265Z | INFO  | DNS:RESPONSE | Created DNS response entity for host 'vpn-api.proton.me' with 1 IP addresses and an expiration date in UTC of 6/14/2024 5:57:59 AM based on a TTL of 00:00:17. | {"Caller":"DnsResolverBase.CreateDnsResponseWithIpAddresses:163"}
+2024-06-14T05:57:42.265Z | INFO  | DNS:RESPONSE | The endpoint '192.168.1.1:53' responded successfully to the DNS query of host 'vpn-api.proton.me'. | {"Caller":"DnsOverUdpResolver.ResolveAsync:122"}
+2024-06-14T05:57:42.266Z | INFO  | DNS:RESPONSE | 1 records were received for host 'vpn-api.proton.me' with DNS over UDP endpoint '192.168.1.1:53'. TTL is 17 seconds. | {"Caller":"DnsOverUdpResolver.ResolveAsync:129"}
+2024-06-14T05:57:42.266Z | INFO  | DNS:RESPONSE | Created DNS response entity for host 'vpn-api.proton.me' with 1 IP addresses and an expiration date in UTC of 6/14/2024 5:57:59 AM based on a TTL of 00:00:17. | {"Caller":"DnsResolverBase.CreateDnsResponseWithIpAddresses:163"}
+2024-06-14T05:57:42.266Z | INFO  | DNS:RESPONSE | Successfully resolved host 'vpn-api.proton.me'. | {"Caller":"DnsResolverBase.LogResult:80"}
+2024-06-14T05:57:42.266Z | INFO  | DNS | The UDP DNS request was successful for host 'vpn-api.proton.me'. Saving to cache. | {"Caller":"DnsManager.ResolveDnsAsync:71"}
+2024-06-14T05:57:42.291Z | INFO  | SETTINGS:CHANGED | Setting 'DnsCache' changed from 'null' to '58837Z","ExpirationDateTimeUtc":"2024-06-14T05:57:59.2658837Z"}}'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T05:57:42.291Z | INFO  | API:REQUEST | GET "https://185.159.159.148/vpn/servers/55K2X3kEMoE7CYwCVc7BZDglfc_qdWC4hJ0F05pEXzYxaDHY5UMrWWoXB8tsYsJPkxSPdbdaJurA7CXZdG8eCg==" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T05:57:42.929Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/vpn/servers/55K2X3kEMoE7CYwCVc7BZDglfc_qdWC4hJ0F05pEXzYxaDHY5UMrWWoXB8tsYsJPkxSPdbdaJurA7CXZdG8eCg==": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T06:09:06.531Z | INFO  | DNS | No fresh IP addresses for host 'vpn-api.proton.me' were found in the cache. Triggering a refresh. | {"Caller":"ARecordDnsManagerBase.ResolveOrGetFromCacheAsync:93"}
+2024-06-14T06:09:06.531Z | INFO  | DNS | Attempting a UDP DNS request for host 'vpn-api.proton.me'. | {"Caller":"DnsManager.ResolveDnsAsync:66"}
+2024-06-14T06:09:06.531Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me'. | {"Caller":"DnsResolverBase.ResolveAsync:63"}
+2024-06-14T06:09:06.531Z | INFO  | DNS:NAME_SERVER | Getting name servers from available network interfaces. | {"Caller":"NameServersLoader.Get:45"}
+2024-06-14T06:09:06.550Z | INFO  | DNS:NAME_SERVER | Found 2 name servers. | {"Caller":"NameServersLoader.Get:61"}
+2024-06-14T06:09:06.550Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me' through '10.98.0.1:53'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:84"}
+2024-06-14T06:09:06.551Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me' through '192.168.1.1:53'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:84"}
+2024-06-14T06:09:06.552Z | INFO  | DNS:RESPONSE | The endpoint '10.98.0.1:53' responded successfully to the DNS query of host 'vpn-api.proton.me'. | {"Caller":"DnsOverUdpResolver.ResolveAsync:122"}
+2024-06-14T06:09:06.552Z | INFO  | DNS:RESPONSE | 1 records were received for host 'vpn-api.proton.me' with DNS over UDP endpoint '10.98.0.1:53'. TTL is 17 seconds. | {"Caller":"DnsOverUdpResolver.ResolveAsync:129"}
+2024-06-14T06:09:06.552Z | INFO  | DNS:RESPONSE | Created DNS response entity for host 'vpn-api.proton.me' with 1 IP addresses and an expiration date in UTC of 6/14/2024 6:09:23 AM based on a TTL of 00:00:17. | {"Caller":"DnsResolverBase.CreateDnsResponseWithIpAddresses:163"}
+2024-06-14T06:09:06.552Z | INFO  | DNS | The DNS over UDP resolver through '192.168.1.1:53' was canceled when resolving host 'vpn-api.proton.me'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:94"}
+2024-06-14T06:09:06.552Z | INFO  | DNS:RESPONSE | Successfully resolved host 'vpn-api.proton.me'. | {"Caller":"DnsResolverBase.LogResult:80"}
+2024-06-14T06:09:06.552Z | INFO  | DNS | The UDP DNS request was successful for host 'vpn-api.proton.me'. Saving to cache. | {"Caller":"DnsManager.ResolveDnsAsync:71"}
+2024-06-14T06:09:06.575Z | INFO  | SETTINGS:CHANGED | Setting 'DnsCache' changed from 'null' to '24847Z","ExpirationDateTimeUtc":"2024-06-14T06:09:23.5524847Z"}}'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T06:09:06.575Z | INFO  | API:REQUEST | GET "https://185.159.159.148/feature/v2/frontend" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T06:09:07.595Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/feature/v2/frontend": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T06:09:07.617Z | INFO  | SETTINGS:CHANGED | Setting 'FeatureFlags' changed from 'ALikyJmemS1AcHN3z6i6BynOooUdbDTgQ+j6FHu5yuc+GgvSLxsNg+MJkDFpiw="' to 'eY75PN0fZCOgURZrvR5sirxL9MrUYftAXnPdToG/Wsq4TRS3dv9YgSpHmAJoA=="'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T06:10:11.749Z | INFO  | DNS | No fresh IP addresses for host 'vpn-api.proton.me' were found in the cache. Triggering a refresh. | {"Caller":"ARecordDnsManagerBase.ResolveOrGetFromCacheAsync:93"}
+2024-06-14T06:10:11.749Z | INFO  | DNS | Attempting a UDP DNS request for host 'vpn-api.proton.me'. | {"Caller":"DnsManager.ResolveDnsAsync:66"}
+2024-06-14T06:10:11.749Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me'. | {"Caller":"DnsResolverBase.ResolveAsync:63"}
+2024-06-14T06:10:11.749Z | INFO  | DNS:NAME_SERVER | Getting name servers from available network interfaces. | {"Caller":"NameServersLoader.Get:45"}
+2024-06-14T06:10:11.770Z | INFO  | DNS:NAME_SERVER | Found 2 name servers. | {"Caller":"NameServersLoader.Get:61"}
+2024-06-14T06:10:11.770Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me' through '10.98.0.1:53'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:84"}
+2024-06-14T06:10:11.771Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me' through '192.168.1.1:53'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:84"}
+2024-06-14T06:10:11.772Z | INFO  | DNS:RESPONSE | The endpoint '10.98.0.1:53' responded successfully to the DNS query of host 'vpn-api.proton.me'. | {"Caller":"DnsOverUdpResolver.ResolveAsync:122"}
+2024-06-14T06:10:11.772Z | INFO  | DNS:RESPONSE | 1 records were received for host 'vpn-api.proton.me' with DNS over UDP endpoint '10.98.0.1:53'. TTL is 17 seconds. | {"Caller":"DnsOverUdpResolver.ResolveAsync:129"}
+2024-06-14T06:10:11.772Z | INFO  | DNS:RESPONSE | Created DNS response entity for host 'vpn-api.proton.me' with 1 IP addresses and an expiration date in UTC of 6/14/2024 6:10:28 AM based on a TTL of 00:00:17. | {"Caller":"DnsResolverBase.CreateDnsResponseWithIpAddresses:163"}
+2024-06-14T06:10:11.772Z | INFO  | DNS | The DNS over UDP resolver through '192.168.1.1:53' was canceled when resolving host 'vpn-api.proton.me'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:94"}
+2024-06-14T06:10:11.772Z | INFO  | DNS:RESPONSE | Successfully resolved host 'vpn-api.proton.me'. | {"Caller":"DnsResolverBase.LogResult:80"}
+2024-06-14T06:10:11.772Z | INFO  | DNS | The UDP DNS request was successful for host 'vpn-api.proton.me'. Saving to cache. | {"Caller":"DnsManager.ResolveDnsAsync:71"}
+2024-06-14T06:10:11.791Z | INFO  | SETTINGS:CHANGED | Setting 'DnsCache' changed from 'null' to '22951Z","ExpirationDateTimeUtc":"2024-06-14T06:10:28.7722951Z"}}'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T06:10:11.791Z | INFO  | API:REQUEST | GET "https://185.159.159.148/vpn/logicals?SignServer=Server.EntryIP,Server.Label" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T06:10:12.683Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/vpn/logicals?SignServer=Server.EntryIP,Server.Label": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T06:10:13.573Z | INFO  | APP | Servers updated. Num of servers: 5238 Num of countries: 91 | {"Caller":"ServerManager.LogServerListUpdate:84"}
+2024-06-14T06:19:24.784Z | INFO  | DNS | No fresh IP addresses for host 'vpn-api.proton.me' were found in the cache. Triggering a refresh. | {"Caller":"ARecordDnsManagerBase.ResolveOrGetFromCacheAsync:93"}
+2024-06-14T06:19:24.784Z | INFO  | DNS | Attempting a UDP DNS request for host 'vpn-api.proton.me'. | {"Caller":"DnsManager.ResolveDnsAsync:66"}
+2024-06-14T06:19:24.784Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me'. | {"Caller":"DnsResolverBase.ResolveAsync:63"}
+2024-06-14T06:19:24.784Z | INFO  | DNS:NAME_SERVER | Getting name servers from available network interfaces. | {"Caller":"NameServersLoader.Get:45"}
+2024-06-14T06:19:24.803Z | INFO  | DNS:NAME_SERVER | Found 2 name servers. | {"Caller":"NameServersLoader.Get:61"}
+2024-06-14T06:19:24.803Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me' through '10.98.0.1:53'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:84"}
+2024-06-14T06:19:24.804Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me' through '192.168.1.1:53'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:84"}
+2024-06-14T06:19:24.960Z | INFO  | DNS:RESPONSE | The endpoint '10.98.0.1:53' responded successfully to the DNS query of host 'vpn-api.proton.me'. | {"Caller":"DnsOverUdpResolver.ResolveAsync:122"}
+2024-06-14T06:19:24.960Z | INFO  | DNS:RESPONSE | 1 records were received for host 'vpn-api.proton.me' with DNS over UDP endpoint '10.98.0.1:53'. TTL is 17 seconds. | {"Caller":"DnsOverUdpResolver.ResolveAsync:129"}
+2024-06-14T06:19:24.960Z | INFO  | DNS:RESPONSE | Created DNS response entity for host 'vpn-api.proton.me' with 1 IP addresses and an expiration date in UTC of 6/14/2024 6:19:41 AM based on a TTL of 00:00:17. | {"Caller":"DnsResolverBase.CreateDnsResponseWithIpAddresses:163"}
+2024-06-14T06:19:24.960Z | INFO  | DNS:RESPONSE | Successfully resolved host 'vpn-api.proton.me'. | {"Caller":"DnsResolverBase.LogResult:80"}
+2024-06-14T06:19:24.960Z | INFO  | DNS | The UDP DNS request was successful for host 'vpn-api.proton.me'. Saving to cache. | {"Caller":"DnsManager.ResolveDnsAsync:71"}
+2024-06-14T06:19:24.983Z | INFO  | SETTINGS:CHANGED | Setting 'DnsCache' changed from 'null' to '02066Z","ExpirationDateTimeUtc":"2024-06-14T06:19:41.9602066Z"}}'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T06:19:24.983Z | INFO  | DNS | The DNS over UDP resolver through '192.168.1.1:53' was canceled when resolving host 'vpn-api.proton.me'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:94"}
+2024-06-14T06:19:24.983Z | INFO  | API:REQUEST | GET "https://185.159.159.148/core/v4/settings" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T06:19:25.556Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/core/v4/settings": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T06:37:33.194Z | INFO  | DNS | No fresh IP addresses for host 'vpn-api.proton.me' were found in the cache. Triggering a refresh. | {"Caller":"ARecordDnsManagerBase.ResolveOrGetFromCacheAsync:93"}
+2024-06-14T06:37:33.194Z | INFO  | DNS | Attempting a UDP DNS request for host 'vpn-api.proton.me'. | {"Caller":"DnsManager.ResolveDnsAsync:66"}
+2024-06-14T06:37:33.194Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me'. | {"Caller":"DnsResolverBase.ResolveAsync:63"}
+2024-06-14T06:37:33.194Z | INFO  | DNS:NAME_SERVER | Getting name servers from available network interfaces. | {"Caller":"NameServersLoader.Get:45"}
+2024-06-14T06:37:33.216Z | INFO  | DNS:NAME_SERVER | Found 2 name servers. | {"Caller":"NameServersLoader.Get:61"}
+2024-06-14T06:37:33.216Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me' through '10.98.0.1:53'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:84"}
+2024-06-14T06:37:33.216Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me' through '192.168.1.1:53'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:84"}
+2024-06-14T06:37:33.217Z | INFO  | DNS:RESPONSE | The endpoint '10.98.0.1:53' responded successfully to the DNS query of host 'vpn-api.proton.me'. | {"Caller":"DnsOverUdpResolver.ResolveAsync:122"}
+2024-06-14T06:37:33.217Z | INFO  | DNS:RESPONSE | 1 records were received for host 'vpn-api.proton.me' with DNS over UDP endpoint '10.98.0.1:53'. TTL is 17 seconds. | {"Caller":"DnsOverUdpResolver.ResolveAsync:129"}
+2024-06-14T06:37:33.217Z | INFO  | DNS:RESPONSE | Created DNS response entity for host 'vpn-api.proton.me' with 1 IP addresses and an expiration date in UTC of 6/14/2024 6:37:50 AM based on a TTL of 00:00:17. | {"Caller":"DnsResolverBase.CreateDnsResponseWithIpAddresses:163"}
+2024-06-14T06:37:33.217Z | INFO  | DNS:RESPONSE | Successfully resolved host 'vpn-api.proton.me'. | {"Caller":"DnsResolverBase.LogResult:80"}
+2024-06-14T06:37:33.218Z | INFO  | DNS | The UDP DNS request was successful for host 'vpn-api.proton.me'. Saving to cache. | {"Caller":"DnsManager.ResolveDnsAsync:71"}
+2024-06-14T06:37:33.245Z | INFO  | SETTINGS:CHANGED | Setting 'DnsCache' changed from 'null' to '217601Z","ExpirationDateTimeUtc":"2024-06-14T06:37:50.217601Z"}}'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T06:37:33.246Z | INFO  | DNS | The DNS over UDP resolver through '192.168.1.1:53' was canceled when resolving host 'vpn-api.proton.me'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:94"}
+2024-06-14T06:37:33.246Z | INFO  | API:REQUEST | GET "https://185.159.159.148/vpn/servers/55K2X3kEMoE7CYwCVc7BZDglfc_qdWC4hJ0F05pEXzYxaDHY5UMrWWoXB8tsYsJPkxSPdbdaJurA7CXZdG8eCg==" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T06:37:33.804Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/vpn/servers/55K2X3kEMoE7CYwCVc7BZDglfc_qdWC4hJ0F05pEXzYxaDHY5UMrWWoXB8tsYsJPkxSPdbdaJurA7CXZdG8eCg==": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T06:38:52.668Z | INFO  | PROCESS.COMM | Received update state change with status Checking. | {"Caller":"AppController.UpdateStateChange:95"}
+2024-06-14T06:38:53.535Z | INFO  | PROCESS.COMM | Received update state change with status Checking. | {"Caller":"AppController.UpdateStateChange:95"}
+2024-06-14T06:38:54.181Z | INFO  | PROCESS.COMM | Received update state change with status None. | {"Caller":"AppController.UpdateStateChange:95"}
+2024-06-14T07:07:34.902Z | INFO  | DNS | No fresh IP addresses for host 'vpn-api.proton.me' were found in the cache. Triggering a refresh. | {"Caller":"ARecordDnsManagerBase.ResolveOrGetFromCacheAsync:93"}
+2024-06-14T07:07:34.902Z | INFO  | DNS | Attempting a UDP DNS request for host 'vpn-api.proton.me'. | {"Caller":"DnsManager.ResolveDnsAsync:66"}
+2024-06-14T07:07:34.902Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me'. | {"Caller":"DnsResolverBase.ResolveAsync:63"}
+2024-06-14T07:07:34.902Z | INFO  | DNS:NAME_SERVER | Getting name servers from available network interfaces. | {"Caller":"NameServersLoader.Get:45"}
+2024-06-14T07:07:34.923Z | INFO  | DNS:NAME_SERVER | Found 2 name servers. | {"Caller":"NameServersLoader.Get:61"}
+2024-06-14T07:07:34.923Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me' through '10.98.0.1:53'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:84"}
+2024-06-14T07:07:34.923Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me' through '192.168.1.1:53'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:84"}
+2024-06-14T07:07:34.972Z | INFO  | DNS:RESPONSE | The endpoint '10.98.0.1:53' responded successfully to the DNS query of host 'vpn-api.proton.me'. | {"Caller":"DnsOverUdpResolver.ResolveAsync:122"}
+2024-06-14T07:07:34.972Z | INFO  | DNS:RESPONSE | 1 records were received for host 'vpn-api.proton.me' with DNS over UDP endpoint '10.98.0.1:53'. TTL is 17 seconds. | {"Caller":"DnsOverUdpResolver.ResolveAsync:129"}
+2024-06-14T07:07:34.972Z | INFO  | DNS:RESPONSE | Created DNS response entity for host 'vpn-api.proton.me' with 1 IP addresses and an expiration date in UTC of 6/14/2024 7:07:51 AM based on a TTL of 00:00:17. | {"Caller":"DnsResolverBase.CreateDnsResponseWithIpAddresses:163"}
+2024-06-14T07:07:34.972Z | INFO  | DNS:RESPONSE | Successfully resolved host 'vpn-api.proton.me'. | {"Caller":"DnsResolverBase.LogResult:80"}
+2024-06-14T07:07:34.972Z | INFO  | DNS | The UDP DNS request was successful for host 'vpn-api.proton.me'. Saving to cache. | {"Caller":"DnsManager.ResolveDnsAsync:71"}
+2024-06-14T07:07:34.995Z | INFO  | SETTINGS:CHANGED | Setting 'DnsCache' changed from 'null' to '25376Z","ExpirationDateTimeUtc":"2024-06-14T07:07:51.9725376Z"}}'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T07:07:34.995Z | INFO  | DNS | The DNS over UDP resolver through '192.168.1.1:53' was canceled when resolving host 'vpn-api.proton.me'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:94"}
+2024-06-14T07:07:34.995Z | INFO  | API:REQUEST | GET "https://185.159.159.148/vpn/v2" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T07:07:35.788Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/vpn/v2": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T07:10:14.754Z | INFO  | DNS | No fresh IP addresses for host 'vpn-api.proton.me' were found in the cache. Triggering a refresh. | {"Caller":"ARecordDnsManagerBase.ResolveOrGetFromCacheAsync:93"}
+2024-06-14T07:10:14.754Z | INFO  | DNS | Attempting a UDP DNS request for host 'vpn-api.proton.me'. | {"Caller":"DnsManager.ResolveDnsAsync:66"}
+2024-06-14T07:10:14.754Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me'. | {"Caller":"DnsResolverBase.ResolveAsync:63"}
+2024-06-14T07:10:14.754Z | INFO  | DNS:NAME_SERVER | Getting name servers from available network interfaces. | {"Caller":"NameServersLoader.Get:45"}
+2024-06-14T07:10:14.779Z | INFO  | DNS:NAME_SERVER | Found 2 name servers. | {"Caller":"NameServersLoader.Get:61"}
+2024-06-14T07:10:14.779Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me' through '10.98.0.1:53'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:84"}
+2024-06-14T07:10:14.779Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me' through '192.168.1.1:53'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:84"}
+2024-06-14T07:10:14.831Z | INFO  | DNS:RESPONSE | The endpoint '10.98.0.1:53' responded successfully to the DNS query of host 'vpn-api.proton.me'. | {"Caller":"DnsOverUdpResolver.ResolveAsync:122"}
+2024-06-14T07:10:14.831Z | INFO  | DNS:RESPONSE | 1 records were received for host 'vpn-api.proton.me' with DNS over UDP endpoint '10.98.0.1:53'. TTL is 17 seconds. | {"Caller":"DnsOverUdpResolver.ResolveAsync:129"}
+2024-06-14T07:10:14.831Z | INFO  | DNS:RESPONSE | Created DNS response entity for host 'vpn-api.proton.me' with 1 IP addresses and an expiration date in UTC of 6/14/2024 7:10:31 AM based on a TTL of 00:00:17. | {"Caller":"DnsResolverBase.CreateDnsResponseWithIpAddresses:163"}
+2024-06-14T07:10:14.831Z | INFO  | DNS | The DNS over UDP resolver through '192.168.1.1:53' was canceled when resolving host 'vpn-api.proton.me'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:94"}
+2024-06-14T07:10:14.832Z | INFO  | DNS:RESPONSE | Successfully resolved host 'vpn-api.proton.me'. | {"Caller":"DnsResolverBase.LogResult:80"}
+2024-06-14T07:10:14.832Z | INFO  | DNS | The UDP DNS request was successful for host 'vpn-api.proton.me'. Saving to cache. | {"Caller":"DnsManager.ResolveDnsAsync:71"}
+2024-06-14T07:10:14.852Z | INFO  | SETTINGS:CHANGED | Setting 'DnsCache' changed from 'null' to '15971Z","ExpirationDateTimeUtc":"2024-06-14T07:10:31.8315971Z"}}'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T07:10:14.852Z | INFO  | API:REQUEST | GET "https://185.159.159.148/vpn/streamingservices" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T07:10:15.557Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/vpn/streamingservices": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T07:17:24.401Z | INFO  | DNS | No fresh IP addresses for host 'vpn-api.proton.me' were found in the cache. Triggering a refresh. | {"Caller":"ARecordDnsManagerBase.ResolveOrGetFromCacheAsync:93"}
+2024-06-14T07:17:24.401Z | INFO  | DNS | Attempting a UDP DNS request for host 'vpn-api.proton.me'. | {"Caller":"DnsManager.ResolveDnsAsync:66"}
+2024-06-14T07:17:24.401Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me'. | {"Caller":"DnsResolverBase.ResolveAsync:63"}
+2024-06-14T07:17:24.401Z | INFO  | DNS:NAME_SERVER | Getting name servers from available network interfaces. | {"Caller":"NameServersLoader.Get:45"}
+2024-06-14T07:17:24.424Z | INFO  | DNS:NAME_SERVER | Found 2 name servers. | {"Caller":"NameServersLoader.Get:61"}
+2024-06-14T07:17:24.424Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me' through '10.98.0.1:53'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:84"}
+2024-06-14T07:17:24.424Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me' through '192.168.1.1:53'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:84"}
+2024-06-14T07:17:24.425Z | INFO  | DNS:RESPONSE | The endpoint '10.98.0.1:53' responded successfully to the DNS query of host 'vpn-api.proton.me'. | {"Caller":"DnsOverUdpResolver.ResolveAsync:122"}
+2024-06-14T07:17:24.425Z | INFO  | DNS:RESPONSE | 1 records were received for host 'vpn-api.proton.me' with DNS over UDP endpoint '10.98.0.1:53'. TTL is 17 seconds. | {"Caller":"DnsOverUdpResolver.ResolveAsync:129"}
+2024-06-14T07:17:24.425Z | INFO  | DNS:RESPONSE | Created DNS response entity for host 'vpn-api.proton.me' with 1 IP addresses and an expiration date in UTC of 6/14/2024 7:17:41 AM based on a TTL of 00:00:17. | {"Caller":"DnsResolverBase.CreateDnsResponseWithIpAddresses:163"}
+2024-06-14T07:17:24.425Z | INFO  | DNS:RESPONSE | Successfully resolved host 'vpn-api.proton.me'. | {"Caller":"DnsResolverBase.LogResult:80"}
+2024-06-14T07:17:24.426Z | INFO  | DNS | The UDP DNS request was successful for host 'vpn-api.proton.me'. Saving to cache. | {"Caller":"DnsManager.ResolveDnsAsync:71"}
+2024-06-14T07:17:24.445Z | INFO  | SETTINGS:CHANGED | Setting 'DnsCache' changed from 'null' to '56227Z","ExpirationDateTimeUtc":"2024-06-14T07:17:41.4256227Z"}}'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T07:17:24.445Z | INFO  | DNS | The DNS over UDP resolver through '192.168.1.1:53' was canceled when resolving host 'vpn-api.proton.me'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:94"}
+2024-06-14T07:17:24.445Z | INFO  | API:REQUEST | GET "https://185.159.159.148/vpn/servers/55K2X3kEMoE7CYwCVc7BZDglfc_qdWC4hJ0F05pEXzYxaDHY5UMrWWoXB8tsYsJPkxSPdbdaJurA7CXZdG8eCg==" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T07:17:25.192Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/vpn/servers/55K2X3kEMoE7CYwCVc7BZDglfc_qdWC4hJ0F05pEXzYxaDHY5UMrWWoXB8tsYsJPkxSPdbdaJurA7CXZdG8eCg==": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T16:50:14.472Z | INFO  | APP:START | = Booting ProtonVPN version: 3.2.11 os: Microsoft Windows NT 10.0.19045.0 64 bit = | {"Caller":"Bootstraper.OnStartup:148"}
+2024-06-14T16:50:14.476Z | INFO  | APP | Checking for files to be deleted in log folder 'C:\Users\Vampeyer\AppData\Local\ProtonVPN\Logs'. The maximum number of files allowed is 10. | {"Caller":"LogCleaner.Clean:39"}
+2024-06-14T16:50:14.476Z | INFO  | APP | The folder 'C:\Users\Vampeyer\AppData\Local\ProtonVPN\Logs' has 2 files. | {"Caller":"LogCleaner.Clean:42"}
+2024-06-14T16:50:14.476Z | INFO  | APP | The log folder has 0 files exceeding the limit of 10 files. | {"Caller":"LogCleaner.GetFilesExceedingLimit:81"}
+2024-06-14T16:50:14.477Z | INFO  | APP | The log folder has 0 old files with a last write date before 2024-05-17T16:50:14.4772510Z. | {"Caller":"LogCleaner.GetOldFiles:113"}
+2024-06-14T16:50:14.477Z | INFO  | APP | The log folder has 0 files to delete. | {"Caller":"LogCleaner.GetFilesToDelete:69"}
+2024-06-14T16:50:14.592Z | INFO  | APP | Servers updated. Num of servers: 0 -> 5238 Num of countries: 0 -> 91 | {"Caller":"ServerManager.LogServerListUpdate:84"}
+2024-06-14T16:50:14.608Z | INFO  | SETTINGS:CHANGED | Setting 'AppStartCounter' changed from '15' to '16'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T16:50:14.790Z | INFO  | DNS | No fresh IP addresses for host 'vpn-api.proton.me' were found in the cache. Triggering a refresh. | {"Caller":"ARecordDnsManagerBase.ResolveOrGetFromCacheAsync:93"}
+2024-06-14T16:50:14.791Z | INFO  | DNS | Attempting a UDP DNS request for host 'vpn-api.proton.me'. | {"Caller":"DnsManager.ResolveDnsAsync:66"}
+2024-06-14T16:50:14.791Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me'. | {"Caller":"DnsResolverBase.ResolveAsync:63"}
+2024-06-14T16:50:14.860Z | INFO  | DNS:NAME_SERVER | Getting name servers from available network interfaces. | {"Caller":"NameServersLoader.Get:45"}
+2024-06-14T16:50:14.884Z | INFO  | DNS:NAME_SERVER | Found 1 name servers. | {"Caller":"NameServersLoader.Get:61"}
+2024-06-14T16:50:14.884Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me' through '192.168.1.1:53'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:84"}
+2024-06-14T16:50:15.022Z | INFO  | DNS:RESPONSE | The endpoint '192.168.1.1:53' responded successfully to the DNS query of host 'vpn-api.proton.me'. | {"Caller":"DnsOverUdpResolver.ResolveAsync:122"}
+2024-06-14T16:50:15.023Z | INFO  | DNS:RESPONSE | 1 records were received for host 'vpn-api.proton.me' with DNS over UDP endpoint '192.168.1.1:53'. TTL is 17 seconds. | {"Caller":"DnsOverUdpResolver.ResolveAsync:129"}
+2024-06-14T16:50:15.032Z | INFO  | DNS:RESPONSE | Created DNS response entity for host 'vpn-api.proton.me' with 1 IP addresses and an expiration date in UTC of 6/14/2024 4:50:32 PM based on a TTL of 00:00:17. | {"Caller":"DnsResolverBase.CreateDnsResponseWithIpAddresses:163"}
+2024-06-14T16:50:15.034Z | INFO  | DNS:RESPONSE | Successfully resolved host 'vpn-api.proton.me'. | {"Caller":"DnsResolverBase.LogResult:80"}
+2024-06-14T16:50:15.034Z | INFO  | DNS | The UDP DNS request was successful for host 'vpn-api.proton.me'. Saving to cache. | {"Caller":"DnsManager.ResolveDnsAsync:71"}
+2024-06-14T16:50:15.063Z | INFO  | SETTINGS:CHANGED | Setting 'DnsCache' changed from 'null' to '44422Z","ExpirationDateTimeUtc":"2024-06-14T16:50:32.0244422Z"}}'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T16:50:15.066Z | INFO  | API:REQUEST | GET "https://185.159.159.148/feature/v2/frontend" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T16:50:15.462Z | INFO  | PROCESS.COMM:CLIENT_START | A new gRPC Client has been created to Server Port 49701. | {"Caller":"GrpcClientBase.CreateWithPortAsync:52"}
+2024-06-14T16:50:15.552Z | INFO  | API:REQUEST | GET "https://185.159.159.148/vpn/v1/featureconfig/dynamic-bug-reports" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T16:50:15.567Z | INFO  | APP.SERVICE:START | Starting the service "ProtonVPN Service" | {"Caller":"LoggingService.Logged:89"}
+2024-06-14T16:50:15.589Z | INFO  | PROCESS.COMM:SERVER_START | A new gRPC Server has been created using Port 49739. | {"Caller":"GrpcServerBase.CreateAndStart:48"}
+2024-06-14T16:50:15.589Z | INFO  | PROCESS.COMM | Sending app gRPC server port 49739 to service. | {"Caller":"Bootstraper.StartGrpcServerAsync:202"}
+2024-06-14T16:50:15.605Z | INFO  | API:REQUEST | GET "https://185.159.159.148/vpn/v2" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T16:50:16.121Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/vpn/v1/featureconfig/dynamic-bug-reports": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T16:50:16.121Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/feature/v2/frontend": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T16:50:16.163Z | INFO  | APP | NetShield Stats - Request timeout set to 00:01:01.3118658. | {"Caller":"NetShieldStatsManager..ctor:74"}
+2024-06-14T16:50:16.163Z | INFO  | SETTINGS:CHANGED | Setting 'FeatureFlags' changed from 'eY75PN0fZCOgURZrvR5sirxL9MrUYftAXnPdToG/Wsq4TRS3dv9YgSpHmAJoA=="' to 'gMQ/zIVHI7hD4x5sCUFMOHBImzkSwIYcb5lnkapC/EGm6dtPPMoPMm4GHv1xw=="'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T16:50:16.243Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/vpn/v2": 401 Unauthorized | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T16:50:16.254Z | INFO  | API | Using refresh token value (showing only first 5 chars) wnoj7 | {"Caller":"TokenClient.LogRefreshToken:94"}
+2024-06-14T16:50:16.254Z | INFO  | API:REQUEST | POST "https://185.159.159.148/auth/refresh" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T16:50:16.799Z | INFO  | API:RESPONSE | POST "https://185.159.159.148/auth/refresh": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T16:50:16.817Z | INFO  | SETTINGS:CHANGED | Setting 'AccessToken' changed from '1+6QtAWOURFuOyZHivAfiyaPsGaVRZSp/W3h8dpeG/XBYK75IWAjr2BrZqD7Q=="' to 'n9+k9B0i/61uAO5y3esTLawE+0U6p3yYduzmDSn6qxf1YWbi7U66+S6x6Mjog=="'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T16:50:16.831Z | INFO  | SETTINGS:CHANGED | Setting 'RefreshToken' changed from 'BgsVSeVqQQI8u7e1Fk4M7R31nKbtDXnfI3YtQmkBNhuaPrPgMG11/Slt0E0ZQ=="' to 'ND3W7nO7DWZatJgBCqFJEMACDog1wGTEclQIBF9snq22UHBHi5gDDxyndURKw=="'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T16:50:16.833Z | INFO  | API:REQUEST | GET "https://185.159.159.148/vpn/v2" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T16:50:16.970Z | INFO  | APP.SERVICE:START | Starting the service "ProtonVPN Service" succeeded | {"Caller":"LoggingService.Logged:93"}
+2024-06-14T16:50:17.225Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/vpn/v2": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T16:50:17.408Z | INFO  | USER.CERT:REFRESH | Requesting a new auth certificate since the current one is considered old. | {"Caller":"AuthCertificateManager.LogNewCertificateRequest:145"}
+2024-06-14T16:50:17.412Z | INFO  | API:REQUEST | POST "https://185.159.159.148/vpn/v1/certificate" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T16:50:17.961Z | INFO  | API:RESPONSE | POST "https://185.159.159.148/vpn/v1/certificate": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T16:50:17.987Z | INFO  | SETTINGS:CHANGED | Setting 'AuthenticationCertificateRequestUtcDate' changed from '"\"2024-06-13T16:50:19.8811177+00:00\""' to '"\"2024-06-14T16:50:17.9656703+00:00\""'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T16:50:18.011Z | INFO  | SETTINGS:CHANGED | Setting 'AuthenticationCertificatePem' changed from '2jAzhrJyn72sHR067CNFjrJ9IZeVRRimeX7RtiTSe07JwPxfzBgJG3aWw/1SOf+"' to 'F7/nlPW56YHIdoXcQsPOMpFtHmDsuz/S+1zNgtj5jdD9UnqBWwmbueyqvzxOQsz"'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T16:50:18.048Z | INFO  | SETTINGS:CHANGED | Setting 'AuthenticationCertificateExpirationUtcDate' changed from '"\"2024-06-14T13:50:19+00:00\""' to '"\"2024-06-15T13:50:17+00:00\""'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T16:50:18.064Z | INFO  | SETTINGS:CHANGED | Setting 'AuthenticationCertificateRefreshUtcDate' changed from '"\"2024-06-14T07:50:19+00:00\""' to '"\"2024-06-15T07:50:17+00:00\""'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T16:50:18.083Z | INFO  | SETTINGS:CHANGED | Setting 'CertificationServerPublicKey' changed from 'I6beHYCVJV//YAR5KGu4ELe6dWnWz17uHiVD1EBaKs5TvmhHRDlIKvb28Hz+Yls"' to 'zUUhkGLWtlm7DseF1vMXP7WNp3IA0haj5wI8B16rkcWb9X7GBOqYwwY/zg6d1OS"'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T16:50:18.085Z | INFO  | USER.CERT:NEW | New auth certificate successfully saved. Expires at 6/15/2024 1:50:17 PM +00:00. | {"Caller":"AuthCertificateManager.RequestAuthCertificateAsync:201"}
+2024-06-14T16:50:18.087Z | INFO  | API:REQUEST | GET "https://185.159.159.148/vpn/location" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T16:50:18.260Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/vpn/location": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T16:50:18.266Z | INFO  | API:REQUEST | GET "https://185.159.159.148/vpn/v2/clientconfig" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T16:50:18.266Z | INFO  | API:REQUEST | GET "https://185.159.159.148/vpn/logicals?SignServer=Server.EntryIP,Server.Label" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T16:50:18.459Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/vpn/v2/clientconfig": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T16:50:18.483Z | INFO  | SETTINGS:CHANGED | Setting 'OpenVpnTcpPorts' changed from 'null' to '[443,7770,8443]'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T16:50:18.499Z | INFO  | SETTINGS:CHANGED | Setting 'OpenVpnUdpPorts' changed from 'null' to '[80,51820,4569,1194,5060]'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T16:50:18.515Z | INFO  | SETTINGS:CHANGED | Setting 'WireGuardPorts' changed from 'null' to '[443,88,1224,51820,500,4500]'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T16:50:18.517Z | INFO  | API:REQUEST | GET "https://185.159.159.148/vpn/streamingservices" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T16:50:18.733Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/vpn/streamingservices": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T16:50:18.738Z | INFO  | APP | The user is logged in, tray icon is now visible. | {"Caller":"TrayIcon.OnUserLoggedIn:152"}
+2024-06-14T16:50:18.777Z | INFO  | SETTINGS:CHANGED | Setting 'SplitTunnelingBlockApps' changed from 'null' to '[]'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T16:50:18.778Z | INFO  | USER.CERT:SCHEDULE_REFRESH | User certificate refresh scheduled for every '00:04:06.9598545'. | {"Caller":"AuthCertificateUpdater.OnUserLoggedIn:60"}
+2024-06-14T16:50:18.783Z | INFO  | APP.SERVICE | Setting "NetShieldEnabled" changed, updating service settings. | {"Caller":"SettingsServiceClientManager.OnAppSettingsChanged:92"}
+2024-06-14T16:50:18.788Z | INFO  | APP.SERVICE | Setting "PortForwardingEnabled" changed, updating service settings. | {"Caller":"SettingsServiceClientManager.OnAppSettingsChanged:92"}
+2024-06-14T16:50:18.796Z | INFO  | APP.SERVICE:START | Starting the service "ProtonVPN Service" | {"Caller":"LoggingService.Logged:89"}
+2024-06-14T16:50:18.797Z | WARN  | APP.SERVICE:START_FAILED | Starting the service "ProtonVPN Service" : Already running | {"Caller":"LoggingService.Logged:135"}
+2024-06-14T16:50:19.365Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/vpn/logicals?SignServer=Server.EntryIP,Server.Label": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T16:50:19.714Z | INFO  | PROCESS.COMM:CLIENT_START | A new gRPC Client has been created to Server Port 49744. | {"Caller":"GrpcClientBase.CreateWithPortAsync:52"}
+2024-06-14T16:50:19.714Z | INFO  | PROCESS.COMM:CLIENT_STOP | A gRPC Client has been stopped. Server endpoint: 'localhost:49701' | {"Caller":"GrpcClientBase.ShutdownChannelIfExists:72"}
+2024-06-14T16:50:19.714Z | INFO  | PROCESS.COMM | Sending the app gRPC server port 49739 to service. | {"Caller":"AppGrpcClient.RegisterStateConsumerAsync:94"}
+2024-06-14T16:50:19.717Z | ERROR | APP.SERVICE:COMM_FAILED | The invocation of 'RepeatState' on VPN Service channel returned an exception and will be retried. Exception message: Status(StatusCode="Unavailable", Detail="failed to connect to all addresses", DebugException="Grpc.Core.Internal.CoreErrorDetailException: {"created":"@1718383819.708000000","description":"Failed to pick subchannel","file":"..\..\..\src\core\ext\filters\client_channel\client_channel.cc","file_line":3218,"referenced_errors":[{"created":"@1718383819.708000000","description":"failed to connect to all addresses","file":"..\..\..\src\core\lib\transport\error_utils.cc","file_line":165,"grpc_status":14}]}") | {"Caller":"ServiceControllerCaller.LogError:87"}
+2024-06-14T16:50:19.719Z | ERROR | APP.SERVICE:COMM_FAILED | The invocation of 'ApplySettings' on VPN Service channel returned an exception and will be retried. Exception message: Status(StatusCode="Unavailable", Detail="failed to connect to all addresses", DebugException="Grpc.Core.Internal.CoreErrorDetailException: {"created":"@1718383819.708000000","description":"Failed to pick subchannel","file":"..\..\..\src\core\ext\filters\client_channel\client_channel.cc","file_line":3218,"referenced_errors":[{"created":"@1718383819.708000000","description":"failed to connect to all addresses","file":"..\..\..\src\core\lib\transport\error_utils.cc","file_line":165,"grpc_status":14}]}") | {"Caller":"ServiceControllerCaller.LogError:87"}
+2024-06-14T16:50:19.721Z | ERROR | APP.SERVICE:COMM_FAILED | The invocation of 'RepeatState' on VPN Service channel returned an exception and will be retried. Exception message: Status(StatusCode="Unavailable", Detail="failed to connect to all addresses", DebugException="Grpc.Core.Internal.CoreErrorDetailException: {"created":"@1718383819.708000000","description":"Failed to pick subchannel","file":"..\..\..\src\core\ext\filters\client_channel\client_channel.cc","file_line":3218,"referenced_errors":[{"created":"@1718383819.708000000","description":"failed to connect to all addresses","file":"..\..\..\src\core\lib\transport\error_utils.cc","file_line":165,"grpc_status":14}]}") | {"Caller":"ServiceControllerCaller.LogError:87"}
+2024-06-14T16:50:19.724Z | ERROR | APP.SERVICE:COMM_FAILED | The invocation of 'CheckForUpdates' on VPN Service channel returned an exception and will be retried. Exception message: Status(StatusCode="Unavailable", Detail="failed to connect to all addresses", DebugException="Grpc.Core.Internal.CoreErrorDetailException: {"created":"@1718383819.708000000","description":"Failed to pick subchannel","file":"..\..\..\src\core\ext\filters\client_channel\client_channel.cc","file_line":3218,"referenced_errors":[{"created":"@1718383819.708000000","description":"failed to connect to all addresses","file":"..\..\..\src\core\lib\transport\error_utils.cc","file_line":165,"grpc_status":14}]}") | {"Caller":"ServiceControllerCaller.LogError:87"}
+2024-06-14T16:50:19.726Z | ERROR | APP.SERVICE:COMM_FAILED | The invocation of 'RegisterVpnClient' on VPN Service channel returned an exception and will be retried. Exception message: Status(StatusCode="Unavailable", Detail="failed to connect to all addresses", DebugException="Grpc.Core.Internal.CoreErrorDetailException: {"created":"@1718383819.708000000","description":"Failed to pick subchannel","file":"..\..\..\src\core\ext\filters\client_channel\client_channel.cc","file_line":3218,"referenced_errors":[{"created":"@1718383819.708000000","description":"failed to connect to all addresses","file":"..\..\..\src\core\lib\transport\error_utils.cc","file_line":165,"grpc_status":14}]}") | {"Caller":"ServiceControllerCaller.LogError:87"}
+2024-06-14T16:50:19.729Z | ERROR | APP.SERVICE:COMM_FAILED | The invocation of 'ApplySettings' on VPN Service channel returned an exception and will be retried. Exception message: Status(StatusCode="Unavailable", Detail="failed to connect to all addresses", DebugException="Grpc.Core.Internal.CoreErrorDetailException: {"created":"@1718383819.708000000","description":"Failed to pick subchannel","file":"..\..\..\src\core\ext\filters\client_channel\client_channel.cc","file_line":3218,"referenced_errors":[{"created":"@1718383819.708000000","description":"failed to connect to all addresses","file":"..\..\..\src\core\lib\transport\error_utils.cc","file_line":165,"grpc_status":14}]}") | {"Caller":"ServiceControllerCaller.LogError:87"}
+2024-06-14T16:50:20.303Z | INFO  | APP | Servers updated. Num of servers: 5238 -> 5301 Num of countries: 91 | {"Caller":"ServerManager.LogServerListUpdate:84"}
+2024-06-14T16:50:20.456Z | INFO  | PROCESS.COMM | Received update state change with status Checking. | {"Caller":"AppController.UpdateStateChange:95"}
+2024-06-14T16:50:20.875Z | INFO  | API:REQUEST | GET "https://185.159.159.148/core/v4/notifications?FullScreenImageSupport=png&FullScreenImageWidth=1024&FullScreenImageHeight=768" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T16:50:20.907Z | ERROR | APP.SERVICE:COMM_FAILED | The invocation of 'ApplySettings' on VPN Service channel returned an exception and will be retried. Exception message: Status(StatusCode="Unavailable", Detail="failed to connect to all addresses", DebugException="Grpc.Core.Internal.CoreErrorDetailException: {"created":"@1718383819.708000000","description":"Failed to pick subchannel","file":"..\..\..\src\core\ext\filters\client_channel\client_channel.cc","file_line":3218,"referenced_errors":[{"created":"@1718383819.708000000","description":"failed to connect to all addresses","file":"..\..\..\src\core\lib\transport\error_utils.cc","file_line":165,"grpc_status":14}]}") | {"Caller":"ServiceControllerCaller.LogError:87"}
+2024-06-14T16:50:20.935Z | INFO  | PROCESS.COMM | Received VPN Status 'Disconnected', NetworkBlocked: False Error: 'None', EndpointIp: '', Label: '', VpnProtocol: 'Smart', OpenVpnAdapter: '' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T16:50:21.113Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/core/v4/notifications?FullScreenImageSupport=png&FullScreenImageWidth=1024&FullScreenImageHeight=768": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T16:50:21.141Z | INFO  | SETTINGS:CHANGED | Setting 'Announcements' changed from 'null' to '[]'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T16:50:21.283Z | INFO  | PROCESS.COMM | Received update state change with status None. | {"Caller":"AppController.UpdateStateChange:95"}
+2024-06-14T16:50:21.336Z | WARN  | OS | Incorrect system time detected. | {"Caller":"SystemTimeValidator.ValidateTime:58"}
+2024-06-14T16:50:27.072Z | INFO  | API:REQUEST | GET "https://185.159.159.148/vpn/location" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T16:50:27.260Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/vpn/location": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T16:51:02.957Z | INFO  | CONN.CONNECT:TRIGGER | Automatically connecting on app start | {"Caller":"AutoConnect.LoadAsync:58"}
+2024-06-14T16:51:02.958Z | INFO  | CONN.CONNECT:TRIGGER | [VpnManager] Quick connect requested. | {"Caller":"AutoConnect.LoadAsync:59"}
+2024-06-14T16:51:03.011Z | INFO  | CONN.CONNECT | Connect requested | {"Caller":"ProfileConnector.Connect:396"}
+2024-06-14T16:51:03.078Z | INFO  | PROCESS.COMM | Received VPN Status 'Disconnected', NetworkBlocked: False Error: 'None', EndpointIp: '', Label: '', VpnProtocol: 'Smart', OpenVpnAdapter: '' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T16:51:03.088Z | INFO  | PROCESS.COMM | Received VPN Status 'Pinging', NetworkBlocked: True Error: 'None', EndpointIp: '138.199.35.115', Label: '1', VpnProtocol: 'Smart', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T16:51:09.793Z | INFO  | PROCESS.COMM | Received VPN Status 'Reconnecting', NetworkBlocked: True Error: 'None', EndpointIp: '138.199.35.115', Label: '1', VpnProtocol: 'OpenVpnTcp', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T16:51:11.062Z | INFO  | PROCESS.COMM | Received VPN Status 'Waiting', NetworkBlocked: True Error: 'None', EndpointIp: '138.199.35.115', Label: '1', VpnProtocol: 'OpenVpnTcp', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T16:51:11.158Z | INFO  | PROCESS.COMM | Received VPN Status 'Authenticating', NetworkBlocked: True Error: 'None', EndpointIp: '138.199.35.115', Label: '1', VpnProtocol: 'OpenVpnTcp', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T16:51:12.600Z | INFO  | PROCESS.COMM | Received VPN Status 'RetrievingConfiguration', NetworkBlocked: True Error: 'None', EndpointIp: '138.199.35.115', Label: '1', VpnProtocol: 'OpenVpnTcp', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T16:51:12.759Z | INFO  | PROCESS.COMM | Received VPN Status 'AssigningIp', NetworkBlocked: True Error: 'None', EndpointIp: '138.199.35.115', Label: '1', VpnProtocol: 'OpenVpnTcp', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T16:51:21.545Z | INFO  | PROCESS.COMM | Received VPN Status 'Connected', NetworkBlocked: True Error: 'None', EndpointIp: '138.199.35.115', Label: '1', VpnProtocol: 'OpenVpnTcp', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T16:51:21.550Z | INFO  | PROCESS.COMM | Received connection details change while connected to server with IP '138.199.35.119' | {"Caller":"AppController.ConnectionDetailsChange:88"}
+2024-06-14T16:51:21.583Z | INFO  | APP | Session graph started. | {"Caller":"SpeedGraphViewModel.OnVpnStateChanged:165"}
+2024-06-14T16:51:21.858Z | INFO  | PROCESS.COMM | Received connection details change while connected to server with IP '138.199.35.117' | {"Caller":"AppController.ConnectionDetailsChange:88"}
+2024-06-14T17:25:28.823Z | INFO  | DNS | No fresh IP addresses for host 'vpn-api.proton.me' were found in the cache. Triggering a refresh. | {"Caller":"ARecordDnsManagerBase.ResolveOrGetFromCacheAsync:93"}
+2024-06-14T17:25:28.823Z | INFO  | DNS | Attempting a UDP DNS request for host 'vpn-api.proton.me'. | {"Caller":"DnsManager.ResolveDnsAsync:66"}
+2024-06-14T17:25:28.823Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me'. | {"Caller":"DnsResolverBase.ResolveAsync:63"}
+2024-06-14T17:25:28.823Z | INFO  | DNS:NAME_SERVER | Getting name servers from available network interfaces. | {"Caller":"NameServersLoader.Get:45"}
+2024-06-14T17:25:28.853Z | INFO  | DNS:NAME_SERVER | Found 2 name servers. | {"Caller":"NameServersLoader.Get:61"}
+2024-06-14T17:25:28.853Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me' through '10.98.0.1:53'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:84"}
+2024-06-14T17:25:28.854Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me' through '192.168.1.1:53'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:84"}
+2024-06-14T17:25:30.400Z | INFO  | DNS:RESPONSE | The endpoint '10.98.0.1:53' responded successfully to the DNS query of host 'vpn-api.proton.me'. | {"Caller":"DnsOverUdpResolver.ResolveAsync:122"}
+2024-06-14T17:25:30.400Z | INFO  | DNS:RESPONSE | 1 records were received for host 'vpn-api.proton.me' with DNS over UDP endpoint '10.98.0.1:53'. TTL is 17 seconds. | {"Caller":"DnsOverUdpResolver.ResolveAsync:129"}
+2024-06-14T17:25:30.400Z | INFO  | DNS:RESPONSE | Created DNS response entity for host 'vpn-api.proton.me' with 1 IP addresses and an expiration date in UTC of 6/14/2024 5:25:47 PM based on a TTL of 00:00:17. | {"Caller":"DnsResolverBase.CreateDnsResponseWithIpAddresses:163"}
+2024-06-14T17:25:30.402Z | INFO  | DNS:RESPONSE | Successfully resolved host 'vpn-api.proton.me'. | {"Caller":"DnsResolverBase.LogResult:80"}
+2024-06-14T17:25:30.402Z | INFO  | DNS | The UDP DNS request was successful for host 'vpn-api.proton.me'. Saving to cache. | {"Caller":"DnsManager.ResolveDnsAsync:71"}
+2024-06-14T17:25:30.423Z | INFO  | SETTINGS:CHANGED | Setting 'DnsCache' changed from 'null' to '400884Z","ExpirationDateTimeUtc":"2024-06-14T17:25:47.400884Z"}}'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T17:25:30.424Z | INFO  | DNS | The DNS over UDP resolver through '192.168.1.1:53' was canceled when resolving host 'vpn-api.proton.me'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:94"}
+2024-06-14T17:25:30.424Z | INFO  | API:REQUEST | GET "https://185.159.159.148/vpn/servers/J9jVRxx0Gkf3imW6NBzG352w73jsI_SaPxt66D4WYwBS-3wpBBF55-NIHh4GDSccbMOD3-up9mGZsWKrKAruOw==" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T17:25:31.548Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/vpn/servers/J9jVRxx0Gkf3imW6NBzG352w73jsI_SaPxt66D4WYwBS-3wpBBF55-NIHh4GDSccbMOD3-up9mGZsWKrKAruOw==": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T17:31:51.850Z | INFO  | SETTINGS:CHANGED | Setting 'WindowPlacement' changed from 'null' to 'rmalPosition":{"Left":1425,"Top":-13,"Right":2385,"Bottom":587}}'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T17:31:51.855Z | INFO  | DNS | No fresh IP addresses for host 'vpn-api.proton.me' were found in the cache. Triggering a refresh. | {"Caller":"ARecordDnsManagerBase.ResolveOrGetFromCacheAsync:93"}
+2024-06-14T17:31:51.855Z | INFO  | DNS | Attempting a UDP DNS request for host 'vpn-api.proton.me'. | {"Caller":"DnsManager.ResolveDnsAsync:66"}
+2024-06-14T17:31:51.855Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me'. | {"Caller":"DnsResolverBase.ResolveAsync:63"}
+2024-06-14T17:31:51.855Z | INFO  | DNS:NAME_SERVER | Getting name servers from available network interfaces. | {"Caller":"NameServersLoader.Get:45"}
+2024-06-14T17:31:51.877Z | INFO  | DNS:NAME_SERVER | Found 2 name servers. | {"Caller":"NameServersLoader.Get:61"}
+2024-06-14T17:31:51.877Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me' through '10.98.0.1:53'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:84"}
+2024-06-14T17:31:51.877Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me' through '192.168.1.1:53'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:84"}
+2024-06-14T17:31:51.882Z | INFO  | DNS:RESPONSE | The endpoint '192.168.1.1:53' responded successfully to the DNS query of host 'vpn-api.proton.me'. | {"Caller":"DnsOverUdpResolver.ResolveAsync:122"}
+2024-06-14T17:31:51.882Z | INFO  | DNS:RESPONSE | 1 records were received for host 'vpn-api.proton.me' with DNS over UDP endpoint '192.168.1.1:53'. TTL is 17 seconds. | {"Caller":"DnsOverUdpResolver.ResolveAsync:129"}
+2024-06-14T17:31:51.882Z | INFO  | DNS:RESPONSE | Created DNS response entity for host 'vpn-api.proton.me' with 1 IP addresses and an expiration date in UTC of 6/14/2024 5:32:08 PM based on a TTL of 00:00:17. | {"Caller":"DnsResolverBase.CreateDnsResponseWithIpAddresses:163"}
+2024-06-14T17:31:51.883Z | INFO  | DNS:RESPONSE | The endpoint '10.98.0.1:53' responded successfully to the DNS query of host 'vpn-api.proton.me'. | {"Caller":"DnsOverUdpResolver.ResolveAsync:122"}
+2024-06-14T17:31:51.883Z | INFO  | DNS:RESPONSE | 1 records were received for host 'vpn-api.proton.me' with DNS over UDP endpoint '10.98.0.1:53'. TTL is 17 seconds. | {"Caller":"DnsOverUdpResolver.ResolveAsync:129"}
+2024-06-14T17:31:51.883Z | INFO  | DNS:RESPONSE | Created DNS response entity for host 'vpn-api.proton.me' with 1 IP addresses and an expiration date in UTC of 6/14/2024 5:32:08 PM based on a TTL of 00:00:17. | {"Caller":"DnsResolverBase.CreateDnsResponseWithIpAddresses:163"}
+2024-06-14T17:31:51.883Z | INFO  | DNS:RESPONSE | Successfully resolved host 'vpn-api.proton.me'. | {"Caller":"DnsResolverBase.LogResult:80"}
+2024-06-14T17:31:51.884Z | INFO  | DNS | The UDP DNS request was successful for host 'vpn-api.proton.me'. Saving to cache. | {"Caller":"DnsManager.ResolveDnsAsync:71"}
+2024-06-14T17:31:51.903Z | INFO  | SETTINGS:CHANGED | Setting 'DnsCache' changed from 'null' to '29851Z","ExpirationDateTimeUtc":"2024-06-14T17:32:08.8829851Z"}}'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T17:31:51.903Z | INFO  | API:REQUEST | GET "https://185.159.159.148/vpn/v2" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T17:31:51.904Z | INFO  | API:REQUEST | GET "https://185.159.159.148/core/v4/settings" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T17:31:51.904Z | INFO  | API:REQUEST | GET "https://185.159.159.148/vpn/loads" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T17:31:53.037Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/vpn/v2": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T17:31:53.183Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/core/v4/settings": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T17:31:53.637Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/vpn/loads": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T17:31:56.261Z | INFO  | SETTINGS:CHANGED | Setting 'WindowPlacement' changed from 'null' to '"NormalPosition":{"Left":83,"Top":20,"Right":1043,"Bottom":620}}'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T17:57:31.213Z | INFO  | APP:START | = Booting ProtonVPN version: 3.2.11 os: Microsoft Windows NT 10.0.19045.0 64 bit = | {"Caller":"Bootstraper.OnStartup:148"}
+2024-06-14T17:57:31.216Z | INFO  | APP | Checking for files to be deleted in log folder 'C:\Users\Vampeyer\AppData\Local\ProtonVPN\Logs'. The maximum number of files allowed is 10. | {"Caller":"LogCleaner.Clean:39"}
+2024-06-14T17:57:31.217Z | INFO  | APP | The folder 'C:\Users\Vampeyer\AppData\Local\ProtonVPN\Logs' has 2 files. | {"Caller":"LogCleaner.Clean:42"}
+2024-06-14T17:57:31.217Z | INFO  | APP | The log folder has 0 files exceeding the limit of 10 files. | {"Caller":"LogCleaner.GetFilesExceedingLimit:81"}
+2024-06-14T17:57:31.217Z | INFO  | APP | The log folder has 0 old files with a last write date before 2024-05-17T17:57:31.2176794Z. | {"Caller":"LogCleaner.GetOldFiles:113"}
+2024-06-14T17:57:31.218Z | INFO  | APP | The log folder has 0 files to delete. | {"Caller":"LogCleaner.GetFilesToDelete:69"}
+2024-06-14T17:57:31.322Z | INFO  | APP | Servers updated. Num of servers: 0 -> 5301 Num of countries: 0 -> 91 | {"Caller":"ServerManager.LogServerListUpdate:84"}
+2024-06-14T17:57:31.339Z | INFO  | SETTINGS:CHANGED | Setting 'AppStartCounter' changed from '16' to '17'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T17:57:31.441Z | INFO  | DNS | No fresh IP addresses for host 'vpn-api.proton.me' were found in the cache. Triggering a refresh. | {"Caller":"ARecordDnsManagerBase.ResolveOrGetFromCacheAsync:93"}
+2024-06-14T17:57:31.441Z | INFO  | DNS | Attempting a UDP DNS request for host 'vpn-api.proton.me'. | {"Caller":"DnsManager.ResolveDnsAsync:66"}
+2024-06-14T17:57:31.441Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me'. | {"Caller":"DnsResolverBase.ResolveAsync:63"}
+2024-06-14T17:57:31.505Z | INFO  | DNS:NAME_SERVER | Getting name servers from available network interfaces. | {"Caller":"NameServersLoader.Get:45"}
+2024-06-14T17:57:31.529Z | INFO  | DNS:NAME_SERVER | Found 1 name servers. | {"Caller":"NameServersLoader.Get:61"}
+2024-06-14T17:57:31.529Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me' through '192.168.1.1:53'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:84"}
+2024-06-14T17:57:31.641Z | INFO  | DNS:RESPONSE | The endpoint '192.168.1.1:53' responded successfully to the DNS query of host 'vpn-api.proton.me'. | {"Caller":"DnsOverUdpResolver.ResolveAsync:122"}
+2024-06-14T17:57:31.642Z | INFO  | DNS:RESPONSE | 1 records were received for host 'vpn-api.proton.me' with DNS over UDP endpoint '192.168.1.1:53'. TTL is 17 seconds. | {"Caller":"DnsOverUdpResolver.ResolveAsync:129"}
+2024-06-14T17:57:31.645Z | INFO  | DNS:RESPONSE | Created DNS response entity for host 'vpn-api.proton.me' with 1 IP addresses and an expiration date in UTC of 6/14/2024 5:57:48 PM based on a TTL of 00:00:17. | {"Caller":"DnsResolverBase.CreateDnsResponseWithIpAddresses:163"}
+2024-06-14T17:57:31.645Z | INFO  | DNS:RESPONSE | Successfully resolved host 'vpn-api.proton.me'. | {"Caller":"DnsResolverBase.LogResult:80"}
+2024-06-14T17:57:31.645Z | INFO  | DNS | The UDP DNS request was successful for host 'vpn-api.proton.me'. Saving to cache. | {"Caller":"DnsManager.ResolveDnsAsync:71"}
+2024-06-14T17:57:31.685Z | INFO  | SETTINGS:CHANGED | Setting 'DnsCache' changed from 'null' to '21752Z","ExpirationDateTimeUtc":"2024-06-14T17:57:48.6421752Z"}}'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T17:57:31.687Z | INFO  | API:REQUEST | GET "https://185.159.159.148/feature/v2/frontend" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T17:57:31.990Z | INFO  | PROCESS.COMM:CLIENT_START | A new gRPC Client has been created to Server Port 49744. | {"Caller":"GrpcClientBase.CreateWithPortAsync:52"}
+2024-06-14T17:57:32.065Z | INFO  | API:REQUEST | GET "https://185.159.159.148/vpn/v1/featureconfig/dynamic-bug-reports" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T17:57:32.094Z | INFO  | PROCESS.COMM:SERVER_START | A new gRPC Server has been created using Port 49718. | {"Caller":"GrpcServerBase.CreateAndStart:48"}
+2024-06-14T17:57:32.094Z | INFO  | PROCESS.COMM | Sending app gRPC server port 49718 to service. | {"Caller":"Bootstraper.StartGrpcServerAsync:202"}
+2024-06-14T17:57:32.101Z | INFO  | APP.SERVICE:START | Starting the service "ProtonVPN Service" | {"Caller":"LoggingService.Logged:89"}
+2024-06-14T17:57:32.116Z | INFO  | API:REQUEST | GET "https://185.159.159.148/vpn/v2" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T17:57:32.538Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/vpn/v1/featureconfig/dynamic-bug-reports": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T17:57:32.685Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/vpn/v2": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T17:57:32.735Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/feature/v2/frontend": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T17:57:32.775Z | INFO  | APP | NetShield Stats - Request timeout set to 00:01:09.6432776. | {"Caller":"NetShieldStatsManager..ctor:74"}
+2024-06-14T17:57:32.776Z | INFO  | SETTINGS:CHANGED | Setting 'FeatureFlags' changed from 'gMQ/zIVHI7hD4x5sCUFMOHBImzkSwIYcb5lnkapC/EGm6dtPPMoPMm4GHv1xw=="' to 'm84Hz2Jyd/ku+QVYi3bLAhp6T3Phv7r7R5o94mlgmKIKBoGMtwN5yYmVqpBrA=="'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T17:57:32.869Z | INFO  | API:REQUEST | GET "https://185.159.159.148/vpn/location" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T17:57:33.089Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/vpn/location": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T17:57:33.093Z | INFO  | API:REQUEST | GET "https://185.159.159.148/vpn/v2/clientconfig" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T17:57:33.093Z | INFO  | API:REQUEST | GET "https://185.159.159.148/vpn/logicals?SignServer=Server.EntryIP,Server.Label" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T17:57:33.363Z | INFO  | APP.SERVICE:START | Starting the service "ProtonVPN Service" succeeded | {"Caller":"LoggingService.Logged:93"}
+2024-06-14T17:57:33.528Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/vpn/v2/clientconfig": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T17:57:33.550Z | INFO  | SETTINGS:CHANGED | Setting 'OpenVpnTcpPorts' changed from 'null' to '[443,7770,8443]'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T17:57:33.561Z | INFO  | SETTINGS:CHANGED | Setting 'OpenVpnUdpPorts' changed from 'null' to '[80,51820,4569,1194,5060]'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T17:57:33.573Z | INFO  | SETTINGS:CHANGED | Setting 'WireGuardPorts' changed from 'null' to '[443,88,1224,51820,500,4500]'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T17:57:33.575Z | INFO  | API:REQUEST | GET "https://185.159.159.148/vpn/streamingservices" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T17:57:33.768Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/vpn/streamingservices": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T17:57:33.773Z | INFO  | APP | The user is logged in, tray icon is now visible. | {"Caller":"TrayIcon.OnUserLoggedIn:152"}
+2024-06-14T17:57:33.807Z | INFO  | SETTINGS:CHANGED | Setting 'SplitTunnelingBlockApps' changed from 'null' to '[]'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T17:57:33.807Z | INFO  | USER.CERT:SCHEDULE_REFRESH | User certificate refresh scheduled for every '00:04:56.6728595'. | {"Caller":"AuthCertificateUpdater.OnUserLoggedIn:60"}
+2024-06-14T17:57:33.814Z | INFO  | APP.SERVICE | Setting "NetShieldEnabled" changed, updating service settings. | {"Caller":"SettingsServiceClientManager.OnAppSettingsChanged:92"}
+2024-06-14T17:57:33.822Z | INFO  | APP.SERVICE | Setting "PortForwardingEnabled" changed, updating service settings. | {"Caller":"SettingsServiceClientManager.OnAppSettingsChanged:92"}
+2024-06-14T17:57:33.828Z | INFO  | APP.SERVICE:START | Starting the service "ProtonVPN Service" | {"Caller":"LoggingService.Logged:89"}
+2024-06-14T17:57:33.829Z | WARN  | APP.SERVICE:START_FAILED | Starting the service "ProtonVPN Service" : Already running | {"Caller":"LoggingService.Logged:135"}
+2024-06-14T17:57:34.496Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/vpn/logicals?SignServer=Server.EntryIP,Server.Label": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T17:57:35.400Z | INFO  | APP | Servers updated. Num of servers: 5301 Num of countries: 91 | {"Caller":"ServerManager.LogServerListUpdate:84"}
+2024-06-14T17:57:36.247Z | INFO  | PROCESS.COMM:CLIENT_START | A new gRPC Client has been created to Server Port 49720. | {"Caller":"GrpcClientBase.CreateWithPortAsync:52"}
+2024-06-14T17:57:36.248Z | INFO  | PROCESS.COMM:CLIENT_STOP | A gRPC Client has been stopped. Server endpoint: 'localhost:49744' | {"Caller":"GrpcClientBase.ShutdownChannelIfExists:72"}
+2024-06-14T17:57:36.248Z | INFO  | PROCESS.COMM | Sending the app gRPC server port 49718 to service. | {"Caller":"AppGrpcClient.RegisterStateConsumerAsync:94"}
+2024-06-14T17:57:36.250Z | ERROR | APP.SERVICE:COMM_FAILED | The invocation of 'CheckForUpdates' on VPN Service channel returned an exception and will be retried. Exception message: Status(StatusCode="Unavailable", Detail="failed to connect to all addresses", DebugException="Grpc.Core.Internal.CoreErrorDetailException: {"created":"@1718387856.243000000","description":"Failed to pick subchannel","file":"..\..\..\src\core\ext\filters\client_channel\client_channel.cc","file_line":3218,"referenced_errors":[{"created":"@1718387856.243000000","description":"failed to connect to all addresses","file":"..\..\..\src\core\lib\transport\error_utils.cc","file_line":165,"grpc_status":14}]}") | {"Caller":"ServiceControllerCaller.LogError:87"}
+2024-06-14T17:57:36.252Z | ERROR | APP.SERVICE:COMM_FAILED | The invocation of 'RepeatState' on VPN Service channel returned an exception and will be retried. Exception message: Status(StatusCode="Unavailable", Detail="failed to connect to all addresses", DebugException="Grpc.Core.Internal.CoreErrorDetailException: {"created":"@1718387856.243000000","description":"Failed to pick subchannel","file":"..\..\..\src\core\ext\filters\client_channel\client_channel.cc","file_line":3218,"referenced_errors":[{"created":"@1718387856.243000000","description":"failed to connect to all addresses","file":"..\..\..\src\core\lib\transport\error_utils.cc","file_line":165,"grpc_status":14}]}") | {"Caller":"ServiceControllerCaller.LogError:87"}
+2024-06-14T17:57:36.253Z | ERROR | APP.SERVICE:COMM_FAILED | The invocation of 'ApplySettings' on VPN Service channel returned an exception and will be retried. Exception message: Status(StatusCode="Unavailable", Detail="failed to connect to all addresses", DebugException="Grpc.Core.Internal.CoreErrorDetailException: {"created":"@1718387856.243000000","description":"Failed to pick subchannel","file":"..\..\..\src\core\ext\filters\client_channel\client_channel.cc","file_line":3218,"referenced_errors":[{"created":"@1718387856.243000000","description":"failed to connect to all addresses","file":"..\..\..\src\core\lib\transport\error_utils.cc","file_line":165,"grpc_status":14}]}") | {"Caller":"ServiceControllerCaller.LogError:87"}
+2024-06-14T17:57:36.254Z | ERROR | APP.SERVICE:COMM_FAILED | The invocation of 'ApplySettings' on VPN Service channel returned an exception and will be retried. Exception message: Status(StatusCode="Unavailable", Detail="failed to connect to all addresses", DebugException="Grpc.Core.Internal.CoreErrorDetailException: {"created":"@1718387856.243000000","description":"Failed to pick subchannel","file":"..\..\..\src\core\ext\filters\client_channel\client_channel.cc","file_line":3218,"referenced_errors":[{"created":"@1718387856.243000000","description":"failed to connect to all addresses","file":"..\..\..\src\core\lib\transport\error_utils.cc","file_line":165,"grpc_status":14}]}") | {"Caller":"ServiceControllerCaller.LogError:87"}
+2024-06-14T17:57:36.256Z | ERROR | APP.SERVICE:COMM_FAILED | The invocation of 'ApplySettings' on VPN Service channel returned an exception and will be retried. Exception message: Status(StatusCode="Unavailable", Detail="failed to connect to all addresses", DebugException="Grpc.Core.Internal.CoreErrorDetailException: {"created":"@1718387856.243000000","description":"Failed to pick subchannel","file":"..\..\..\src\core\ext\filters\client_channel\client_channel.cc","file_line":3218,"referenced_errors":[{"created":"@1718387856.243000000","description":"failed to connect to all addresses","file":"..\..\..\src\core\lib\transport\error_utils.cc","file_line":165,"grpc_status":14}]}") | {"Caller":"ServiceControllerCaller.LogError:87"}
+2024-06-14T17:57:36.257Z | ERROR | APP.SERVICE:COMM_FAILED | The invocation of 'RegisterVpnClient' on VPN Service channel returned an exception and will be retried. Exception message: Status(StatusCode="Unavailable", Detail="failed to connect to all addresses", DebugException="Grpc.Core.Internal.CoreErrorDetailException: {"created":"@1718387856.243000000","description":"Failed to pick subchannel","file":"..\..\..\src\core\ext\filters\client_channel\client_channel.cc","file_line":3218,"referenced_errors":[{"created":"@1718387856.243000000","description":"failed to connect to all addresses","file":"..\..\..\src\core\lib\transport\error_utils.cc","file_line":165,"grpc_status":14}]}") | {"Caller":"ServiceControllerCaller.LogError:87"}
+2024-06-14T17:57:36.976Z | INFO  | PROCESS.COMM | Received update state change with status Checking. | {"Caller":"AppController.UpdateStateChange:95"}
+2024-06-14T17:57:37.099Z | INFO  | API:REQUEST | GET "https://185.159.159.148/core/v4/notifications?FullScreenImageSupport=png&FullScreenImageWidth=1024&FullScreenImageHeight=768" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T17:57:37.106Z | ERROR | APP.SERVICE:COMM_FAILED | The invocation of 'RepeatState' on VPN Service channel returned an exception and will be retried. Exception message: Status(StatusCode="Unavailable", Detail="failed to connect to all addresses", DebugException="Grpc.Core.Internal.CoreErrorDetailException: {"created":"@1718387856.243000000","description":"Failed to pick subchannel","file":"..\..\..\src\core\ext\filters\client_channel\client_channel.cc","file_line":3218,"referenced_errors":[{"created":"@1718387856.243000000","description":"failed to connect to all addresses","file":"..\..\..\src\core\lib\transport\error_utils.cc","file_line":165,"grpc_status":14}]}") | {"Caller":"ServiceControllerCaller.LogError:87"}
+2024-06-14T17:57:37.322Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/core/v4/notifications?FullScreenImageSupport=png&FullScreenImageWidth=1024&FullScreenImageHeight=768": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T17:57:37.342Z | INFO  | SETTINGS:CHANGED | Setting 'Announcements' changed from 'null' to '[]'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T17:57:37.522Z | INFO  | APP | 1 statistical events are now queued. | {"Caller":"StatisticalEventSender.EnqueueAsync:118"}
+2024-06-14T17:57:37.534Z | INFO  | SETTINGS:CHANGED | Setting 'StatisticalEvents' changed from '6mWd4L0lFuF8WbyxaMZeUIPvqxZt+EwbxWqQXXGoN7p5TfSEIJyvVYEvPEXSJ4="' to '8apszYWb1q/6w8iNl4+1/uBFQvT0/TPdRKtgspkQEqcKaOVRXkW21X3vxjqu2w="'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T17:57:37.535Z | INFO  | APP | Sending 1 statistical events. | {"Caller":"StatisticalEventSender.SendAsync:165"}
+2024-06-14T17:57:37.536Z | INFO  | API:REQUEST | POST "https://185.159.159.148/data/v1/stats/multiple" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T17:57:37.775Z | INFO  | API:RESPONSE | POST "https://185.159.159.148/data/v1/stats/multiple": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T17:57:37.776Z | INFO  | APP | Successfully sent 1 statistical events. Removing them from the queue. | {"Caller":"StatisticalEventSender.SendAsync:172"}
+2024-06-14T17:57:37.778Z | INFO  | APP | Removed successfully sent statistical events. 0 events are now queued. | {"Caller":"StatisticalEventSender.RemoveSuccessfullySentEventsAsync:207"}
+2024-06-14T17:57:37.793Z | INFO  | SETTINGS:CHANGED | Setting 'StatisticalEvents' changed from '8apszYWb1q/6w8iNl4+1/uBFQvT0/TPdRKtgspkQEqcKaOVRXkW21X3vxjqu2w="' to 'cAZRf5j1lyNC4pK97k05Yl/V0vTgsB2fS6UllkmtNv6WuZSoP8Ywv36AiI7tE0="'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T17:57:37.804Z | INFO  | PROCESS.COMM | Received update state change with status None. | {"Caller":"AppController.UpdateStateChange:95"}
+2024-06-14T18:01:05.255Z | WARN  | OS | Incorrect system time detected. | {"Caller":"SystemTimeValidator.ValidateTime:58"}
+2024-06-14T18:01:07.104Z | INFO  | CONN.CONNECT:TRIGGER | Automatically connecting on app start | {"Caller":"AutoConnect.LoadAsync:58"}
+2024-06-14T18:01:07.105Z | INFO  | CONN.CONNECT:TRIGGER | [VpnManager] Quick connect requested. | {"Caller":"AutoConnect.LoadAsync:59"}
+2024-06-14T18:01:07.140Z | INFO  | CONN.CONNECT | Connect requested | {"Caller":"ProfileConnector.Connect:396"}
+2024-06-14T18:01:07.215Z | INFO  | PROCESS.COMM | Received VPN Status 'Disconnected', NetworkBlocked: False Error: 'None', EndpointIp: '', Label: '', VpnProtocol: 'Smart', OpenVpnAdapter: '' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T18:01:07.223Z | INFO  | PROCESS.COMM | Received VPN Status 'Pinging', NetworkBlocked: True Error: 'None', EndpointIp: '169.150.218.26', Label: '2', VpnProtocol: 'Smart', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T18:01:08.809Z | INFO  | SETTINGS:CHANGED | Setting 'WindowPlacement' changed from 'null' to '"NormalPosition":{"Left":83,"Top":20,"Right":1043,"Bottom":620}}'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T18:01:08.812Z | INFO  | DNS | No fresh IP addresses for host 'vpn-api.proton.me' were found in the cache. Triggering a refresh. | {"Caller":"ARecordDnsManagerBase.ResolveOrGetFromCacheAsync:93"}
+2024-06-14T18:01:08.812Z | INFO  | DNS | Attempting a UDP DNS request for host 'vpn-api.proton.me'. | {"Caller":"DnsManager.ResolveDnsAsync:66"}
+2024-06-14T18:01:08.812Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me'. | {"Caller":"DnsResolverBase.ResolveAsync:63"}
+2024-06-14T18:01:08.812Z | INFO  | DNS:NAME_SERVER | Getting name servers from available network interfaces. | {"Caller":"NameServersLoader.Get:45"}
+2024-06-14T18:01:08.823Z | INFO  | DNS:NAME_SERVER | Found 1 name servers. | {"Caller":"NameServersLoader.Get:61"}
+2024-06-14T18:01:08.823Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me' through '192.168.1.1:53'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:84"}
+2024-06-14T18:01:08.883Z | INFO  | DNS:RESPONSE | The endpoint '192.168.1.1:53' responded successfully to the DNS query of host 'vpn-api.proton.me'. | {"Caller":"DnsOverUdpResolver.ResolveAsync:122"}
+2024-06-14T18:01:08.883Z | INFO  | DNS:RESPONSE | 1 records were received for host 'vpn-api.proton.me' with DNS over UDP endpoint '192.168.1.1:53'. TTL is 17 seconds. | {"Caller":"DnsOverUdpResolver.ResolveAsync:129"}
+2024-06-14T18:01:08.883Z | INFO  | DNS:RESPONSE | Created DNS response entity for host 'vpn-api.proton.me' with 1 IP addresses and an expiration date in UTC of 6/14/2024 6:01:25 PM based on a TTL of 00:00:17. | {"Caller":"DnsResolverBase.CreateDnsResponseWithIpAddresses:163"}
+2024-06-14T18:01:08.883Z | INFO  | DNS:RESPONSE | Successfully resolved host 'vpn-api.proton.me'. | {"Caller":"DnsResolverBase.LogResult:80"}
+2024-06-14T18:01:08.883Z | INFO  | DNS | The UDP DNS request was successful for host 'vpn-api.proton.me'. Saving to cache. | {"Caller":"DnsManager.ResolveDnsAsync:71"}
+2024-06-14T18:01:08.903Z | INFO  | SETTINGS:CHANGED | Setting 'DnsCache' changed from 'null' to '33792Z","ExpirationDateTimeUtc":"2024-06-14T18:01:25.8833792Z"}}'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T18:01:08.903Z | INFO  | API:REQUEST | GET "https://185.159.159.148/vpn/v2" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T18:01:08.904Z | INFO  | API:REQUEST | GET "https://185.159.159.148/core/v4/settings" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T18:01:09.405Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/vpn/v2": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T18:01:09.550Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/core/v4/settings": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T18:01:11.948Z | INFO  | SETTINGS:CHANGED | Setting 'WindowPlacement' changed from 'null' to 'ormalPosition":{"Left":144,"Top":183,"Right":1104,"Bottom":783}}'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T18:01:14.006Z | INFO  | PROCESS.COMM | Received VPN Status 'Reconnecting', NetworkBlocked: True Error: 'None', EndpointIp: '169.150.218.26', Label: '2', VpnProtocol: 'OpenVpnTcp', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T18:01:15.291Z | INFO  | PROCESS.COMM | Received VPN Status 'Waiting', NetworkBlocked: True Error: 'None', EndpointIp: '169.150.218.26', Label: '2', VpnProtocol: 'OpenVpnTcp', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T18:01:15.407Z | INFO  | PROCESS.COMM | Received VPN Status 'Authenticating', NetworkBlocked: True Error: 'None', EndpointIp: '169.150.218.26', Label: '2', VpnProtocol: 'OpenVpnTcp', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T18:01:17.050Z | INFO  | PROCESS.COMM | Received VPN Status 'RetrievingConfiguration', NetworkBlocked: True Error: 'None', EndpointIp: '169.150.218.26', Label: '2', VpnProtocol: 'OpenVpnTcp', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T18:01:17.237Z | INFO  | PROCESS.COMM | Received VPN Status 'AssigningIp', NetworkBlocked: True Error: 'None', EndpointIp: '169.150.218.26', Label: '2', VpnProtocol: 'OpenVpnTcp', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T18:01:25.683Z | INFO  | PROCESS.COMM | Received VPN Status 'Connected', NetworkBlocked: True Error: 'None', EndpointIp: '169.150.218.26', Label: '2', VpnProtocol: 'OpenVpnTcp', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T18:01:25.688Z | INFO  | PROCESS.COMM | Received connection details change while connected to server with IP '169.150.218.27' | {"Caller":"AppController.ConnectionDetailsChange:88"}
+2024-06-14T18:01:25.722Z | INFO  | APP | Session graph started. | {"Caller":"SpeedGraphViewModel.OnVpnStateChanged:165"}
+2024-06-14T18:01:26.035Z | INFO  | PROCESS.COMM | Received connection details change while connected to server with IP '169.150.218.29' | {"Caller":"AppController.ConnectionDetailsChange:88"}
+2024-06-14T18:47:40.380Z | INFO  | DNS | No fresh IP addresses for host 'vpn-api.proton.me' were found in the cache. Triggering a refresh. | {"Caller":"ARecordDnsManagerBase.ResolveOrGetFromCacheAsync:93"}
+2024-06-14T18:47:40.380Z | INFO  | DNS | Attempting a UDP DNS request for host 'vpn-api.proton.me'. | {"Caller":"DnsManager.ResolveDnsAsync:66"}
+2024-06-14T18:47:40.380Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me'. | {"Caller":"DnsResolverBase.ResolveAsync:63"}
+2024-06-14T18:47:40.380Z | INFO  | DNS:NAME_SERVER | Getting name servers from available network interfaces. | {"Caller":"NameServersLoader.Get:45"}
+2024-06-14T18:47:40.407Z | INFO  | DNS:NAME_SERVER | Found 2 name servers. | {"Caller":"NameServersLoader.Get:61"}
+2024-06-14T18:47:40.407Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me' through '10.98.0.1:53'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:84"}
+2024-06-14T18:47:40.407Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me' through '192.168.1.1:53'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:84"}
+2024-06-14T18:47:40.528Z | INFO  | DNS:RESPONSE | The endpoint '10.98.0.1:53' responded successfully to the DNS query of host 'vpn-api.proton.me'. | {"Caller":"DnsOverUdpResolver.ResolveAsync:122"}
+2024-06-14T18:47:40.528Z | INFO  | DNS:RESPONSE | 1 records were received for host 'vpn-api.proton.me' with DNS over UDP endpoint '10.98.0.1:53'. TTL is 17 seconds. | {"Caller":"DnsOverUdpResolver.ResolveAsync:129"}
+2024-06-14T18:47:40.528Z | INFO  | DNS:RESPONSE | Created DNS response entity for host 'vpn-api.proton.me' with 1 IP addresses and an expiration date in UTC of 6/14/2024 6:47:57 PM based on a TTL of 00:00:17. | {"Caller":"DnsResolverBase.CreateDnsResponseWithIpAddresses:163"}
+2024-06-14T18:47:40.530Z | INFO  | DNS:RESPONSE | Successfully resolved host 'vpn-api.proton.me'. | {"Caller":"DnsResolverBase.LogResult:80"}
+2024-06-14T18:47:40.530Z | INFO  | DNS | The UDP DNS request was successful for host 'vpn-api.proton.me'. Saving to cache. | {"Caller":"DnsManager.ResolveDnsAsync:71"}
+2024-06-14T18:47:40.553Z | INFO  | SETTINGS:CHANGED | Setting 'DnsCache' changed from 'null' to '87452Z","ExpirationDateTimeUtc":"2024-06-14T18:47:57.5287452Z"}}'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T18:47:40.554Z | INFO  | DNS | The DNS over UDP resolver through '192.168.1.1:53' was canceled when resolving host 'vpn-api.proton.me'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:94"}
+2024-06-14T18:47:40.554Z | INFO  | API:REQUEST | GET "https://185.159.159.148/vpn/servers/o5S-TsPSzPAZ7j3HPVX0f8Juy3Q_BQIcxkEwBkQ-jfrlb1Q--wyQU2YSWjR4s5pVslO_3PcOHa1-CDlS-E6-Bw==" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T18:47:41.250Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/vpn/servers/o5S-TsPSzPAZ7j3HPVX0f8Juy3Q_BQIcxkEwBkQ-jfrlb1Q--wyQU2YSWjR4s5pVslO_3PcOHa1-CDlS-E6-Bw==": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T19:08:21.853Z | INFO  | PROCESS.COMM | Received VPN Status 'Reconnecting', NetworkBlocked: True Error: 'None', EndpointIp: '169.150.218.26', Label: '2', VpnProtocol: 'OpenVpnTcp', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T19:08:21.853Z | INFO  | PROCESS.COMM | Received VPN Status 'Waiting', NetworkBlocked: True Error: 'None', EndpointIp: '169.150.218.26', Label: '2', VpnProtocol: 'OpenVpnTcp', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T19:08:21.853Z | INFO  | PROCESS.COMM | Received VPN Status 'Connected', NetworkBlocked: True Error: 'None', EndpointIp: '169.150.218.26', Label: '2', VpnProtocol: 'OpenVpnTcp', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T19:08:21.853Z | INFO  | PROCESS.COMM | Received connection details change while connected to server with IP '169.150.218.28' | {"Caller":"AppController.ConnectionDetailsChange:88"}
+2024-06-14T19:08:21.854Z | INFO  | PROCESS.COMM | Received VPN Status 'AssigningIp', NetworkBlocked: True Error: 'None', EndpointIp: '169.150.218.26', Label: '2', VpnProtocol: 'OpenVpnTcp', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T19:08:21.853Z | INFO  | PROCESS.COMM | Received VPN Status 'Authenticating', NetworkBlocked: True Error: 'None', EndpointIp: '169.150.218.26', Label: '2', VpnProtocol: 'OpenVpnTcp', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T19:08:21.853Z | INFO  | PROCESS.COMM | Received connection details change while connected to server with IP '169.150.218.29' | {"Caller":"AppController.ConnectionDetailsChange:88"}
+2024-06-14T19:08:21.857Z | INFO  | APP | Session graph stopped due to VPN status change: Reconnecting | {"Caller":"SpeedGraphViewModel.OnVpnStateChanged:170"}
+2024-06-14T19:08:21.867Z | INFO  | APP | Session graph started. | {"Caller":"SpeedGraphViewModel.OnVpnStateChanged:165"}
+2024-06-14T19:08:22.022Z | INFO  | APP | Session graph stopped due to VPN status change: AssigningIp | {"Caller":"SpeedGraphViewModel.OnVpnStateChanged:170"}
+2024-06-14T20:19:54.561Z | INFO  | DNS | No fresh IP addresses for host 'vpn-api.proton.me' were found in the cache. Triggering a refresh. | {"Caller":"ARecordDnsManagerBase.ResolveOrGetFromCacheAsync:93"}
+2024-06-14T20:19:54.561Z | INFO  | DNS | Attempting a UDP DNS request for host 'vpn-api.proton.me'. | {"Caller":"DnsManager.ResolveDnsAsync:66"}
+2024-06-14T20:19:54.561Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me'. | {"Caller":"DnsResolverBase.ResolveAsync:63"}
+2024-06-14T20:19:54.561Z | INFO  | DNS:NAME_SERVER | Getting name servers from available network interfaces. | {"Caller":"NameServersLoader.Get:45"}
+2024-06-14T20:19:54.588Z | INFO  | DNS:NAME_SERVER | Found 2 name servers. | {"Caller":"NameServersLoader.Get:61"}
+2024-06-14T20:19:54.588Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me' through '10.98.0.1:53'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:84"}
+2024-06-14T20:19:54.588Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me' through '192.168.1.1:53'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:84"}
+2024-06-14T20:19:55.101Z | INFO  | DNS:RESPONSE | The endpoint '10.98.0.1:53' responded successfully to the DNS query of host 'vpn-api.proton.me'. | {"Caller":"DnsOverUdpResolver.ResolveAsync:122"}
+2024-06-14T20:19:55.101Z | INFO  | DNS:RESPONSE | 1 records were received for host 'vpn-api.proton.me' with DNS over UDP endpoint '10.98.0.1:53'. TTL is 17 seconds. | {"Caller":"DnsOverUdpResolver.ResolveAsync:129"}
+2024-06-14T20:19:55.101Z | INFO  | DNS:RESPONSE | Created DNS response entity for host 'vpn-api.proton.me' with 1 IP addresses and an expiration date in UTC of 6/14/2024 8:20:12 PM based on a TTL of 00:00:17. | {"Caller":"DnsResolverBase.CreateDnsResponseWithIpAddresses:163"}
+2024-06-14T20:19:55.101Z | INFO  | DNS | The DNS over UDP resolver through '192.168.1.1:53' was canceled when resolving host 'vpn-api.proton.me'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:94"}
+2024-06-14T20:19:55.102Z | INFO  | DNS:RESPONSE | Successfully resolved host 'vpn-api.proton.me'. | {"Caller":"DnsResolverBase.LogResult:80"}
+2024-06-14T20:19:55.102Z | INFO  | DNS | The UDP DNS request was successful for host 'vpn-api.proton.me'. Saving to cache. | {"Caller":"DnsManager.ResolveDnsAsync:71"}
+2024-06-14T20:19:55.127Z | INFO  | SETTINGS:CHANGED | Setting 'DnsCache' changed from 'null' to '13357Z","ExpirationDateTimeUtc":"2024-06-14T20:20:12.1013357Z"}}'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T20:19:55.127Z | INFO  | API:REQUEST | GET "https://185.159.159.148/core/v4/notifications?FullScreenImageSupport=png&FullScreenImageWidth=1024&FullScreenImageHeight=768" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T20:19:56.261Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/core/v4/notifications?FullScreenImageSupport=png&FullScreenImageWidth=1024&FullScreenImageHeight=768": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T20:19:56.273Z | INFO  | SETTINGS:CHANGED | Setting 'Announcements' changed from 'null' to '[]'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T20:43:51.232Z | INFO  | DNS | No fresh IP addresses for host 'vpn-api.proton.me' were found in the cache. Triggering a refresh. | {"Caller":"ARecordDnsManagerBase.ResolveOrGetFromCacheAsync:93"}
+2024-06-14T20:43:51.232Z | INFO  | DNS | Attempting a UDP DNS request for host 'vpn-api.proton.me'. | {"Caller":"DnsManager.ResolveDnsAsync:66"}
+2024-06-14T20:43:51.232Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me'. | {"Caller":"DnsResolverBase.ResolveAsync:63"}
+2024-06-14T20:43:51.232Z | INFO  | DNS:NAME_SERVER | Getting name servers from available network interfaces. | {"Caller":"NameServersLoader.Get:45"}
+2024-06-14T20:43:51.255Z | INFO  | DNS:NAME_SERVER | Found 2 name servers. | {"Caller":"NameServersLoader.Get:61"}
+2024-06-14T20:43:51.255Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me' through '10.98.0.1:53'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:84"}
+2024-06-14T20:43:51.256Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me' through '192.168.1.1:53'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:84"}
+2024-06-14T20:43:51.770Z | INFO  | DNS:RESPONSE | The endpoint '10.98.0.1:53' responded successfully to the DNS query of host 'vpn-api.proton.me'. | {"Caller":"DnsOverUdpResolver.ResolveAsync:122"}
+2024-06-14T20:43:51.770Z | INFO  | DNS:RESPONSE | 1 records were received for host 'vpn-api.proton.me' with DNS over UDP endpoint '10.98.0.1:53'. TTL is 17 seconds. | {"Caller":"DnsOverUdpResolver.ResolveAsync:129"}
+2024-06-14T20:43:51.770Z | INFO  | DNS:RESPONSE | Created DNS response entity for host 'vpn-api.proton.me' with 1 IP addresses and an expiration date in UTC of 6/14/2024 8:44:08 PM based on a TTL of 00:00:17. | {"Caller":"DnsResolverBase.CreateDnsResponseWithIpAddresses:163"}
+2024-06-14T20:43:51.770Z | INFO  | DNS | The DNS over UDP resolver through '192.168.1.1:53' was canceled when resolving host 'vpn-api.proton.me'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:94"}
+2024-06-14T20:43:51.771Z | INFO  | DNS:RESPONSE | Successfully resolved host 'vpn-api.proton.me'. | {"Caller":"DnsResolverBase.LogResult:80"}
+2024-06-14T20:43:51.771Z | INFO  | DNS | The UDP DNS request was successful for host 'vpn-api.proton.me'. Saving to cache. | {"Caller":"DnsManager.ResolveDnsAsync:71"}
+2024-06-14T20:43:51.791Z | INFO  | SETTINGS:CHANGED | Setting 'DnsCache' changed from 'null' to '770454Z","ExpirationDateTimeUtc":"2024-06-14T20:44:08.770454Z"}}'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T20:43:51.791Z | INFO  | API:REQUEST | GET "https://185.159.159.148/vpn/streamingservices" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T20:43:52.544Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/vpn/streamingservices": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T20:57:32.078Z | INFO  | PROCESS.COMM | Received update state change with status Checking. | {"Caller":"AppController.UpdateStateChange:95"}
+2024-06-14T20:57:33.628Z | INFO  | PROCESS.COMM | Received update state change with status Checking. | {"Caller":"AppController.UpdateStateChange:95"}
+2024-06-14T20:57:33.631Z | INFO  | PROCESS.COMM | Received update state change with status None. | {"Caller":"AppController.UpdateStateChange:95"}
+2024-06-14T21:11:17.075Z | INFO  | DNS | No fresh IP addresses for host 'vpn-api.proton.me' were found in the cache. Triggering a refresh. | {"Caller":"ARecordDnsManagerBase.ResolveOrGetFromCacheAsync:93"}
+2024-06-14T21:11:17.075Z | INFO  | DNS | Attempting a UDP DNS request for host 'vpn-api.proton.me'. | {"Caller":"DnsManager.ResolveDnsAsync:66"}
+2024-06-14T21:11:17.075Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me'. | {"Caller":"DnsResolverBase.ResolveAsync:63"}
+2024-06-14T21:11:17.075Z | INFO  | DNS:NAME_SERVER | Getting name servers from available network interfaces. | {"Caller":"NameServersLoader.Get:45"}
+2024-06-14T21:11:17.101Z | INFO  | DNS:NAME_SERVER | Found 2 name servers. | {"Caller":"NameServersLoader.Get:61"}
+2024-06-14T21:11:17.101Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me' through '10.98.0.1:53'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:84"}
+2024-06-14T21:11:17.101Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me' through '192.168.1.1:53'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:84"}
+2024-06-14T21:11:17.405Z | INFO  | DNS:RESPONSE | The endpoint '10.98.0.1:53' responded successfully to the DNS query of host 'vpn-api.proton.me'. | {"Caller":"DnsOverUdpResolver.ResolveAsync:122"}
+2024-06-14T21:11:17.405Z | INFO  | DNS:RESPONSE | 1 records were received for host 'vpn-api.proton.me' with DNS over UDP endpoint '10.98.0.1:53'. TTL is 17 seconds. | {"Caller":"DnsOverUdpResolver.ResolveAsync:129"}
+2024-06-14T21:11:17.405Z | INFO  | DNS:RESPONSE | Created DNS response entity for host 'vpn-api.proton.me' with 1 IP addresses and an expiration date in UTC of 6/14/2024 9:11:34 PM based on a TTL of 00:00:17. | {"Caller":"DnsResolverBase.CreateDnsResponseWithIpAddresses:163"}
+2024-06-14T21:11:17.405Z | INFO  | DNS:RESPONSE | Successfully resolved host 'vpn-api.proton.me'. | {"Caller":"DnsResolverBase.LogResult:80"}
+2024-06-14T21:11:17.405Z | INFO  | DNS | The UDP DNS request was successful for host 'vpn-api.proton.me'. Saving to cache. | {"Caller":"DnsManager.ResolveDnsAsync:71"}
+2024-06-14T21:11:17.427Z | INFO  | SETTINGS:CHANGED | Setting 'DnsCache' changed from 'null' to '51847Z","ExpirationDateTimeUtc":"2024-06-14T21:11:34.4051847Z"}}'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T21:11:17.428Z | INFO  | DNS | The DNS over UDP resolver through '192.168.1.1:53' was canceled when resolving host 'vpn-api.proton.me'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:94"}
+2024-06-14T21:11:17.428Z | INFO  | API:REQUEST | GET "https://185.159.159.148/vpn/v2" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T21:11:18.303Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/vpn/v2": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T21:12:47.739Z | INFO  | DNS | No fresh IP addresses for host 'vpn-api.proton.me' were found in the cache. Triggering a refresh. | {"Caller":"ARecordDnsManagerBase.ResolveOrGetFromCacheAsync:93"}
+2024-06-14T21:12:47.739Z | INFO  | DNS | Attempting a UDP DNS request for host 'vpn-api.proton.me'. | {"Caller":"DnsManager.ResolveDnsAsync:66"}
+2024-06-14T21:12:47.740Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me'. | {"Caller":"DnsResolverBase.ResolveAsync:63"}
+2024-06-14T21:12:47.740Z | INFO  | DNS:NAME_SERVER | Getting name servers from available network interfaces. | {"Caller":"NameServersLoader.Get:45"}
+2024-06-14T21:12:47.765Z | INFO  | DNS:NAME_SERVER | Found 2 name servers. | {"Caller":"NameServersLoader.Get:61"}
+2024-06-14T21:12:47.766Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me' through '10.98.0.1:53'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:84"}
+2024-06-14T21:12:47.766Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me' through '192.168.1.1:53'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:84"}
+2024-06-14T21:12:47.767Z | INFO  | DNS:RESPONSE | The endpoint '10.98.0.1:53' responded successfully to the DNS query of host 'vpn-api.proton.me'. | {"Caller":"DnsOverUdpResolver.ResolveAsync:122"}
+2024-06-14T21:12:47.767Z | INFO  | DNS:RESPONSE | 1 records were received for host 'vpn-api.proton.me' with DNS over UDP endpoint '10.98.0.1:53'. TTL is 17 seconds. | {"Caller":"DnsOverUdpResolver.ResolveAsync:129"}
+2024-06-14T21:12:47.767Z | INFO  | DNS:RESPONSE | Created DNS response entity for host 'vpn-api.proton.me' with 1 IP addresses and an expiration date in UTC of 6/14/2024 9:13:04 PM based on a TTL of 00:00:17. | {"Caller":"DnsResolverBase.CreateDnsResponseWithIpAddresses:163"}
+2024-06-14T21:12:47.768Z | INFO  | DNS:RESPONSE | The endpoint '192.168.1.1:53' responded successfully to the DNS query of host 'vpn-api.proton.me'. | {"Caller":"DnsOverUdpResolver.ResolveAsync:122"}
+2024-06-14T21:12:47.768Z | INFO  | DNS:RESPONSE | 1 records were received for host 'vpn-api.proton.me' with DNS over UDP endpoint '192.168.1.1:53'. TTL is 17 seconds. | {"Caller":"DnsOverUdpResolver.ResolveAsync:129"}
+2024-06-14T21:12:47.768Z | INFO  | DNS:RESPONSE | Created DNS response entity for host 'vpn-api.proton.me' with 1 IP addresses and an expiration date in UTC of 6/14/2024 9:13:04 PM based on a TTL of 00:00:17. | {"Caller":"DnsResolverBase.CreateDnsResponseWithIpAddresses:163"}
+2024-06-14T21:12:47.768Z | INFO  | DNS:RESPONSE | Successfully resolved host 'vpn-api.proton.me'. | {"Caller":"DnsResolverBase.LogResult:80"}
+2024-06-14T21:12:47.768Z | INFO  | DNS | The UDP DNS request was successful for host 'vpn-api.proton.me'. Saving to cache. | {"Caller":"DnsManager.ResolveDnsAsync:71"}
+2024-06-14T21:12:47.787Z | INFO  | SETTINGS:CHANGED | Setting 'DnsCache' changed from 'null' to '79191Z","ExpirationDateTimeUtc":"2024-06-14T21:13:04.7679191Z"}}'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T21:12:47.787Z | INFO  | API:REQUEST | GET "https://185.159.159.148/core/v4/settings" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T21:12:48.370Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/core/v4/settings": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T21:20:37.283Z | INFO  | DNS | No fresh IP addresses for host 'vpn-api.proton.me' were found in the cache. Triggering a refresh. | {"Caller":"ARecordDnsManagerBase.ResolveOrGetFromCacheAsync:93"}
+2024-06-14T21:20:37.283Z | INFO  | DNS | Attempting a UDP DNS request for host 'vpn-api.proton.me'. | {"Caller":"DnsManager.ResolveDnsAsync:66"}
+2024-06-14T21:20:37.283Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me'. | {"Caller":"DnsResolverBase.ResolveAsync:63"}
+2024-06-14T21:20:37.283Z | INFO  | DNS:NAME_SERVER | Getting name servers from available network interfaces. | {"Caller":"NameServersLoader.Get:45"}
+2024-06-14T21:20:37.309Z | INFO  | DNS:NAME_SERVER | Found 2 name servers. | {"Caller":"NameServersLoader.Get:61"}
+2024-06-14T21:20:37.309Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me' through '10.98.0.1:53'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:84"}
+2024-06-14T21:20:37.309Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me' through '192.168.1.1:53'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:84"}
+2024-06-14T21:20:37.310Z | INFO  | DNS:RESPONSE | The endpoint '10.98.0.1:53' responded successfully to the DNS query of host 'vpn-api.proton.me'. | {"Caller":"DnsOverUdpResolver.ResolveAsync:122"}
+2024-06-14T21:20:37.310Z | INFO  | DNS:RESPONSE | 1 records were received for host 'vpn-api.proton.me' with DNS over UDP endpoint '10.98.0.1:53'. TTL is 17 seconds. | {"Caller":"DnsOverUdpResolver.ResolveAsync:129"}
+2024-06-14T21:20:37.310Z | INFO  | DNS:RESPONSE | Created DNS response entity for host 'vpn-api.proton.me' with 1 IP addresses and an expiration date in UTC of 6/14/2024 9:20:54 PM based on a TTL of 00:00:17. | {"Caller":"DnsResolverBase.CreateDnsResponseWithIpAddresses:163"}
+2024-06-14T21:20:37.311Z | INFO  | DNS | The DNS over UDP resolver through '192.168.1.1:53' was canceled when resolving host 'vpn-api.proton.me'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:94"}
+2024-06-14T21:20:37.311Z | INFO  | DNS:RESPONSE | Successfully resolved host 'vpn-api.proton.me'. | {"Caller":"DnsResolverBase.LogResult:80"}
+2024-06-14T21:20:37.311Z | INFO  | DNS | The UDP DNS request was successful for host 'vpn-api.proton.me'. Saving to cache. | {"Caller":"DnsManager.ResolveDnsAsync:71"}
+2024-06-14T21:20:37.332Z | INFO  | SETTINGS:CHANGED | Setting 'DnsCache' changed from 'null' to '07937Z","ExpirationDateTimeUtc":"2024-06-14T21:20:54.3107937Z"}}'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T21:20:37.332Z | INFO  | API:REQUEST | GET "https://185.159.159.148/feature/v2/frontend" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T21:20:38.396Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/feature/v2/frontend": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T21:20:38.418Z | INFO  | SETTINGS:CHANGED | Setting 'FeatureFlags' changed from 'm84Hz2Jyd/ku+QVYi3bLAhp6T3Phv7r7R5o94mlgmKIKBoGMtwN5yYmVqpBrA=="' to '/rhZiOjHRoM848WJ8lYor706t2Gnxl62l1Lc17oHf6XmUOpDhb6v49h708dEe8="'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T21:27:00.056Z | INFO  | DNS | No fresh IP addresses for host 'vpn-api.proton.me' were found in the cache. Triggering a refresh. | {"Caller":"ARecordDnsManagerBase.ResolveOrGetFromCacheAsync:93"}
+2024-06-14T21:27:00.056Z | INFO  | DNS | Attempting a UDP DNS request for host 'vpn-api.proton.me'. | {"Caller":"DnsManager.ResolveDnsAsync:66"}
+2024-06-14T21:27:00.056Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me'. | {"Caller":"DnsResolverBase.ResolveAsync:63"}
+2024-06-14T21:27:00.056Z | INFO  | DNS:NAME_SERVER | Getting name servers from available network interfaces. | {"Caller":"NameServersLoader.Get:45"}
+2024-06-14T21:27:00.081Z | INFO  | DNS:NAME_SERVER | Found 2 name servers. | {"Caller":"NameServersLoader.Get:61"}
+2024-06-14T21:27:00.081Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me' through '10.98.0.1:53'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:84"}
+2024-06-14T21:27:00.081Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me' through '192.168.1.1:53'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:84"}
+2024-06-14T21:27:00.266Z | INFO  | DNS:RESPONSE | The endpoint '10.98.0.1:53' responded successfully to the DNS query of host 'vpn-api.proton.me'. | {"Caller":"DnsOverUdpResolver.ResolveAsync:122"}
+2024-06-14T21:27:00.266Z | INFO  | DNS:RESPONSE | 1 records were received for host 'vpn-api.proton.me' with DNS over UDP endpoint '10.98.0.1:53'. TTL is 17 seconds. | {"Caller":"DnsOverUdpResolver.ResolveAsync:129"}
+2024-06-14T21:27:00.266Z | INFO  | DNS:RESPONSE | Created DNS response entity for host 'vpn-api.proton.me' with 1 IP addresses and an expiration date in UTC of 6/14/2024 9:27:17 PM based on a TTL of 00:00:17. | {"Caller":"DnsResolverBase.CreateDnsResponseWithIpAddresses:163"}
+2024-06-14T21:27:00.266Z | INFO  | DNS | The DNS over UDP resolver through '192.168.1.1:53' was canceled when resolving host 'vpn-api.proton.me'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:94"}
+2024-06-14T21:27:00.267Z | INFO  | DNS:RESPONSE | Successfully resolved host 'vpn-api.proton.me'. | {"Caller":"DnsResolverBase.LogResult:80"}
+2024-06-14T21:27:00.267Z | INFO  | DNS | The UDP DNS request was successful for host 'vpn-api.proton.me'. Saving to cache. | {"Caller":"DnsManager.ResolveDnsAsync:71"}
+2024-06-14T21:27:00.285Z | INFO  | SETTINGS:CHANGED | Setting 'DnsCache' changed from 'null' to '67084Z","ExpirationDateTimeUtc":"2024-06-14T21:27:17.2667084Z"}}'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T21:27:00.285Z | INFO  | API:REQUEST | GET "https://185.159.159.148/vpn/logicals?SignServer=Server.EntryIP,Server.Label" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T21:27:01.902Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/vpn/logicals?SignServer=Server.EntryIP,Server.Label": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T21:27:02.995Z | INFO  | APP | Servers updated. Num of servers: 5301 Num of countries: 91 | {"Caller":"ServerManager.LogServerListUpdate:84"}
+2024-06-14T21:56:57.882Z | INFO  | DNS | No fresh IP addresses for host 'vpn-api.proton.me' were found in the cache. Triggering a refresh. | {"Caller":"ARecordDnsManagerBase.ResolveOrGetFromCacheAsync:93"}
+2024-06-14T21:56:57.882Z | INFO  | DNS | Attempting a UDP DNS request for host 'vpn-api.proton.me'. | {"Caller":"DnsManager.ResolveDnsAsync:66"}
+2024-06-14T21:56:57.882Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me'. | {"Caller":"DnsResolverBase.ResolveAsync:63"}
+2024-06-14T21:56:57.882Z | INFO  | DNS:NAME_SERVER | Getting name servers from available network interfaces. | {"Caller":"NameServersLoader.Get:45"}
+2024-06-14T21:56:57.895Z | INFO  | DNS:NAME_SERVER | Found 2 name servers. | {"Caller":"NameServersLoader.Get:61"}
+2024-06-14T21:56:57.895Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me' through '10.98.0.1:53'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:84"}
+2024-06-14T21:56:57.896Z | INFO  | DNS:RESOLVE | Attempting to resolve host 'vpn-api.proton.me' through '192.168.1.1:53'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:84"}
+2024-06-14T21:56:57.897Z | WARN  | DNS:ERROR | DNS failed to get a response from '192.168.1.1:53'. | {"Caller":"DnsOverUdpResolver.TryResolveAsync:99"}
+DnsClient.DnsResponseException: Server Failure
+   at DnsClient.LookupClient.ResolveQueryAsync(IReadOnlyList`1 servers, DnsQuerySettings settings, DnsMessageHandler handler, DnsRequestMessage request, LookupClientAudit audit, CancellationToken cancellationToken)
+   at DnsClient.LookupClient.QueryInternalAsync(DnsQuestion question, DnsQuerySettings queryOptions, IReadOnlyCollection`1 servers, CancellationToken cancellationToken)
+   at ProtonVPN.Dns.Resolvers.DnsOverUdpResolver.ResolveAsync(IPEndPoint nameServerIpAddress, String host, CancellationToken cancellationToken)
+   at ProtonVPN.Dns.Resolvers.DnsOverUdpResolver.TryResolveAsync(IPEndPoint nameServerIpAddress, String host, CancellationToken cancellationToken)
+2024-06-14T21:56:58.013Z | INFO  | DNS:RESPONSE | The endpoint '10.98.0.1:53' responded successfully to the DNS query of host 'vpn-api.proton.me'. | {"Caller":"DnsOverUdpResolver.ResolveAsync:122"}
+2024-06-14T21:56:58.013Z | INFO  | DNS:RESPONSE | 1 records were received for host 'vpn-api.proton.me' with DNS over UDP endpoint '10.98.0.1:53'. TTL is 928 seconds. | {"Caller":"DnsOverUdpResolver.ResolveAsync:129"}
+2024-06-14T21:56:58.013Z | INFO  | DNS:RESPONSE | Created DNS response entity for host 'vpn-api.proton.me' with 1 IP addresses and an expiration date in UTC of 6/14/2024 10:12:26 PM based on a TTL of 00:15:28. | {"Caller":"DnsResolverBase.CreateDnsResponseWithIpAddresses:163"}
+2024-06-14T21:56:58.013Z | INFO  | DNS:RESPONSE | Successfully resolved host 'vpn-api.proton.me'. | {"Caller":"DnsResolverBase.LogResult:80"}
+2024-06-14T21:56:58.013Z | INFO  | DNS | The UDP DNS request was successful for host 'vpn-api.proton.me'. Saving to cache. | {"Caller":"DnsManager.ResolveDnsAsync:71"}
+2024-06-14T21:56:58.029Z | INFO  | SETTINGS:CHANGED | Setting 'DnsCache' changed from 'null' to '33522Z","ExpirationDateTimeUtc":"2024-06-14T22:12:26.0133522Z"}}'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T21:56:58.030Z | INFO  | API:REQUEST | GET "https://185.159.159.148/vpn/v2" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T21:56:58.030Z | INFO  | API:REQUEST | GET "https://185.159.159.148/core/v4/settings" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T21:56:58.030Z | INFO  | API:REQUEST | GET "https://185.159.159.148/vpn/v2/clientconfig" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T21:56:58.031Z | INFO  | API:REQUEST | GET "https://185.159.159.148/vpn/loads" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T21:56:58.725Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/vpn/v2/clientconfig": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T21:56:58.725Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/vpn/v2": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T21:56:58.742Z | INFO  | SETTINGS:CHANGED | Setting 'OpenVpnTcpPorts' changed from 'null' to '[443,7770,8443]'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T21:56:58.769Z | INFO  | SETTINGS:CHANGED | Setting 'OpenVpnUdpPorts' changed from 'null' to '[80,51820,4569,1194,5060]'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T21:56:58.800Z | INFO  | SETTINGS:CHANGED | Setting 'WireGuardPorts' changed from 'null' to '[443,88,1224,51820,500,4500]'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T21:56:58.900Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/core/v4/settings": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T21:56:59.232Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/vpn/loads": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T21:57:00.028Z | INFO  | SETTINGS:CHANGED | Setting 'WindowPlacement' changed from 'null' to 'ormalPosition":{"Left":153,"Top":103,"Right":1113,"Bottom":703}}'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T21:57:00.816Z | INFO  | SETTINGS:CHANGED | Setting 'WindowPlacement' changed from 'null' to 'NormalPosition":{"Left":143,"Top":24,"Right":1103,"Bottom":624}}'. | {"Caller":"AppSettings.LogChange:762"}
+2024-06-14T21:57:02.353Z | INFO  | CONN.DISCONNECT:TRIGGER | [VpnManager] Disconnect requested. | {"Caller":"ConnectingViewModel.DisconnectAction:239"}
+2024-06-14T21:57:02.363Z | INFO  | CONN.DISCONNECT:TRIGGER | Disconnect requested (Error: None) | {"Caller":"VpnServiceActionDecorator.Disconnect:78"}
+2024-06-14T21:57:02.654Z | INFO  | PROCESS.COMM | Received VPN Status 'Disconnecting', NetworkBlocked: False Error: 'None', EndpointIp: '', Label: '', VpnProtocol: 'Smart', OpenVpnAdapter: '' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T21:57:02.955Z | INFO  | PROCESS.COMM | Received VPN Status 'Disconnecting', NetworkBlocked: False Error: 'None', EndpointIp: '', Label: '2', VpnProtocol: 'OpenVpnTcp', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T21:57:03.119Z | INFO  | PROCESS.COMM | Received VPN Status 'Disconnecting', NetworkBlocked: False Error: 'None', EndpointIp: '', Label: '', VpnProtocol: 'OpenVpnTcp', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T21:57:03.337Z | INFO  | PROCESS.COMM | Received VPN Status 'Disconnected', NetworkBlocked: False Error: 'None', EndpointIp: '', Label: '', VpnProtocol: 'OpenVpnTcp', OpenVpnAdapter: '' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T21:57:09.341Z | INFO  | API:REQUEST | GET "https://185.159.159.148/vpn/location" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T21:57:09.776Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/vpn/location": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
+2024-06-14T21:57:16.897Z | INFO  | CONN.CONNECT:TRIGGER | [VpnManager] Quick connect requested. | {"Caller":"ConnectionStatusViewModel.QuickConnectAction:482"}
+2024-06-14T21:57:16.915Z | INFO  | CONN.CONNECT | Connect requested | {"Caller":"ProfileConnector.Connect:396"}
+2024-06-14T21:57:16.928Z | INFO  | PROCESS.COMM | Received VPN Status 'Disconnected', NetworkBlocked: False Error: 'None', EndpointIp: '', Label: '', VpnProtocol: 'OpenVpnTcp', OpenVpnAdapter: '' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T21:57:16.929Z | INFO  | PROCESS.COMM | Received VPN Status 'Pinging', NetworkBlocked: True Error: 'None', EndpointIp: '185.107.56.148', Label: '1', VpnProtocol: 'Smart', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T21:57:23.240Z | INFO  | PROCESS.COMM | Received VPN Status 'Reconnecting', NetworkBlocked: True Error: 'None', EndpointIp: '185.107.56.148', Label: '1', VpnProtocol: 'OpenVpnTcp', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T21:57:23.445Z | INFO  | PROCESS.COMM | Received VPN Status 'Waiting', NetworkBlocked: True Error: 'None', EndpointIp: '185.107.56.148', Label: '1', VpnProtocol: 'OpenVpnTcp', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T21:57:23.699Z | INFO  | PROCESS.COMM | Received VPN Status 'Authenticating', NetworkBlocked: True Error: 'None', EndpointIp: '185.107.56.148', Label: '1', VpnProtocol: 'OpenVpnTcp', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T21:57:25.771Z | INFO  | PROCESS.COMM | Received VPN Status 'RetrievingConfiguration', NetworkBlocked: True Error: 'None', EndpointIp: '185.107.56.148', Label: '1', VpnProtocol: 'OpenVpnTcp', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T21:57:25.890Z | INFO  | PROCESS.COMM | Received VPN Status 'AssigningIp', NetworkBlocked: True Error: 'None', EndpointIp: '185.107.56.148', Label: '1', VpnProtocol: 'OpenVpnTcp', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T21:57:32.347Z | INFO  | PROCESS.COMM | Received VPN Status 'Connected', NetworkBlocked: True Error: 'None', EndpointIp: '185.107.56.148', Label: '1', VpnProtocol: 'OpenVpnTcp', OpenVpnAdapter: 'Tun' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T21:57:32.347Z | INFO  | PROCESS.COMM | Received connection details change while connected to server with IP '185.107.56.150' | {"Caller":"AppController.ConnectionDetailsChange:88"}
+2024-06-14T21:57:32.357Z | INFO  | APP | Session graph started. | {"Caller":"SpeedGraphViewModel.OnVpnStateChanged:165"}
+2024-06-14T22:02:41.445Z | INFO  | APP.SERVICE:START | Starting the service "ProtonVPN Service" | {"Caller":"LoggingService.Logged:89"}
+2024-06-14T22:02:42.899Z | INFO  | APP.SERVICE:START | Starting the service "ProtonVPN Service" succeeded | {"Caller":"LoggingService.Logged:93"}
+2024-06-14T22:02:42.901Z | INFO  | PROCESS.COMM:CLIENT_START | A new gRPC Client has been created to Server Port 55734. | {"Caller":"GrpcClientBase.CreateWithPortAsync:52"}
+2024-06-14T22:02:42.901Z | INFO  | PROCESS.COMM:CLIENT_STOP | A gRPC Client has been stopped. Server endpoint: 'localhost:49720' | {"Caller":"GrpcClientBase.ShutdownChannelIfExists:72"}
+2024-06-14T22:02:42.901Z | INFO  | PROCESS.COMM | Sending the app gRPC server port 49718 to service. | {"Caller":"AppGrpcClient.RegisterStateConsumerAsync:94"}
+2024-06-14T22:02:42.963Z | ERROR | APP.SERVICE:COMM_FAILED | The invocation of 'GetTrafficBytes' on VPN Service channel returned an exception and will be retried. Exception message: Status(StatusCode="Unavailable", Detail="failed to connect to all addresses", DebugException="Grpc.Core.Internal.CoreErrorDetailException: {"created":"@1718402561.433000000","description":"Failed to pick subchannel","file":"..\..\..\src\core\ext\filters\client_channel\client_channel.cc","file_line":3218,"referenced_errors":[{"created":"@1718402561.433000000","description":"failed to connect to all addresses","file":"..\..\..\src\core\lib\transport\error_utils.cc","file_line":165,"grpc_status":14}]}") | {"Caller":"ServiceControllerCaller.LogError:87"}
+2024-06-14T22:02:52.451Z | INFO  | APP.SERVICE:START | Starting the service "ProtonVPN Service" | {"Caller":"LoggingService.Logged:89"}
+2024-06-14T22:02:53.372Z | INFO  | APP.SERVICE:START | Starting the service "ProtonVPN Service" succeeded | {"Caller":"LoggingService.Logged:93"}
+2024-06-14T22:02:53.373Z | INFO  | PROCESS.COMM:CLIENT_START | A new gRPC Client has been created to Server Port 55762. | {"Caller":"GrpcClientBase.CreateWithPortAsync:52"}
+2024-06-14T22:02:53.373Z | INFO  | PROCESS.COMM:CLIENT_STOP | A gRPC Client has been stopped. Server endpoint: 'localhost:55734' | {"Caller":"GrpcClientBase.ShutdownChannelIfExists:72"}
+2024-06-14T22:02:53.373Z | INFO  | PROCESS.COMM | Sending the app gRPC server port 49718 to service. | {"Caller":"AppGrpcClient.RegisterStateConsumerAsync:94"}
+2024-06-14T22:02:53.435Z | ERROR | APP.SERVICE:COMM_FAILED | The invocation of 'GetTrafficBytes' on VPN Service channel returned an exception and will be retried. Exception message: Status(StatusCode="Unavailable", Detail="failed to connect to all addresses", DebugException="Grpc.Core.Internal.CoreErrorDetailException: {"created":"@1718402572.442000000","description":"Failed to pick subchannel","file":"..\..\..\src\core\ext\filters\client_channel\client_channel.cc","file_line":3218,"referenced_errors":[{"created":"@1718402572.442000000","description":"failed to connect to all addresses","file":"..\..\..\src\core\lib\transport\error_utils.cc","file_line":165,"grpc_status":14}]}") | {"Caller":"ServiceControllerCaller.LogError:87"}
+2024-06-14T22:03:05.439Z | INFO  | PROCESS.COMM | Received VPN Status 'Disconnecting', NetworkBlocked: False Error: 'None', EndpointIp: '', Label: '', VpnProtocol: 'Smart', OpenVpnAdapter: '' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T22:03:05.442Z | INFO  | APP | Session graph stopped due to VPN status change: Disconnecting | {"Caller":"SpeedGraphViewModel.OnVpnStateChanged:170"}
+2024-06-14T22:03:05.579Z | INFO  | PROCESS.COMM | Received VPN Status 'Disconnected', NetworkBlocked: False Error: 'None', EndpointIp: '', Label: '', VpnProtocol: 'Smart', OpenVpnAdapter: '' | {"Caller":"AppController.VpnStateChange:61"}
+2024-06-14T22:03:11.582Z | INFO  | API:REQUEST | GET "https://185.159.159.148/vpn/location" | {"Caller":"LoggingHandler.SendAsync:49"}
+2024-06-14T22:03:12.011Z | INFO  | API:RESPONSE | GET "https://185.159.159.148/vpn/location": 200 OK | {"Caller":"LoggingHandler.SendAsync:51"}
