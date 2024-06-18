@@ -7,6 +7,7 @@ and this has been the cause of a redirect issue, causing my site online , to bre
 - This is a tricky bug , as it occurs sometimes and does not occur other  times. 
 
 When having proton vpn installed on my local , it works fine except for a little bit of caching issues, which cause a 404 page for certain sites. 
+( Usually after a local development , or one that uses subdirectory folders. - ?  -   ) 
 - Sometimes , when I have caching issues , it is on the browser side , and I have to go and delete files locally to get them 
 to cache properly. I checked all of that , and even tried multiple browsers , so this time I thought then ,
 the issue was  in my network layer somewhere , possibly DNS caching. 
